@@ -12,8 +12,8 @@ import {
 
 const Navbar = () => {
   return (
-    <div className="p-3 space-x-4">
-      <p className="inline cursor-default">john kwon</p>
+    <div className="p-3 space-x-4 text-xl">
+      <p className="inline cursor-default font-bold italic">john kwon</p>
       <span className="ml-1">|</span>
       <a
         href="https://github.com/skjohnkwon"
@@ -43,7 +43,7 @@ const Navbar = () => {
         <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="text-base">
+              <NavigationMenuTrigger className="text-xl">
                 my music
               </NavigationMenuTrigger>
               <NavigationMenuContent className="flex flex-col gap-3 p-6 w-auto">
@@ -65,7 +65,7 @@ const Navbar = () => {
                     youtube
                   </a>
                 </NavigationMenuLink>
-                <NavigationMenuLink>
+                {/* <NavigationMenuLink>
                   <a
                     className="navbar-link"
                     target="_blank"
@@ -73,7 +73,7 @@ const Navbar = () => {
                   >
                     beatstars
                   </a>
-                </NavigationMenuLink>
+                </NavigationMenuLink> */}
               </NavigationMenuContent>
             </NavigationMenuItem>
           </NavigationMenuList>

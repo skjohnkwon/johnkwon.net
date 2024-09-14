@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "outDir": "./dist", // Ensure it outputs to a proper folder
+    "rootDir": "./src", // Ensure it reads from the TypeScript files in the src directory
     "baseUrl": ".",
     "paths": {
       "@/components/*": ["./src/components/*"],
@@ -10,7 +12,7 @@
       "@/pages/*": ["./src/pages/*"],
       "@/assets/*": ["./src/assets/*"],
       "@/services/*": ["./src/services/*"],
-      "@/config/*": ["./src/config/*"],
+      "@/config/*": ["./src/config/*"]
     },
     "target": "ESNext",
     "module": "ESNext",
@@ -25,4 +27,3 @@
   "include": ["src/**/*"],
   "exclude": ["node_modules"]
 }
-
