@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "johnkwon-net",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -18,12 +18,12 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.441.0",
-    "my-app": "file:",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.2",
     "react-scripts": "^5.0.1",
     "tailwind-merge": "^2.5.2",
+    "tailwind-scrollbar": "^3.1.0",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
