@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "@/components/Card/Card";
+import selfie from "../../assets/selfie.png";
 
 interface CardMetadata {
   title: string;
@@ -53,7 +54,7 @@ const Home: React.FC = () => {
           <div className="w-1/2 h-96 border p-4 overflow-auto rounded-lg">
             <div className="text-xl font-bold pb-4">about me</div>
             <img
-              src="/src/assets/selfie.png"
+              src={selfie}
               alt="selfie"
               className="rounded-lg w-52 h-auto float-left mr-3 border-b-slate-900 border-2"
             />
