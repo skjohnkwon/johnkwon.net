@@ -41,7 +41,7 @@ const Navbar = () => {
       </a>
       <span className="ml-1 dark:text-white">+</span>
       <div className="inline-flex">
-        <NavigationMenu className="">
+        <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>
               <NavigationMenuTrigger className="text-xl dark:text-white">
