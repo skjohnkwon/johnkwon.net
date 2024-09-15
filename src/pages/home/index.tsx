@@ -47,11 +47,18 @@ const Home: React.FC = () => {
   return (
     <div className="flex flex-col min-h-[95vh] dark:bg-gray-900 dark:text-white">
       <div className="flex flex-col items-center space-y-4 flex-grow justify-center">
-        <div className="w-1/2 h-[100] border dark:border-gray-700 p-4 rounded-lg">
-          <div className="text-xl font-bold pb-4 dark:text-white">
+        <div className="w-1/2 h-[100] border dark:border-gray-700 p-4 rounded-lg min-w-[400px]">
+          <div className="text-xl font-bold pb-4 lg:pb-2 dark:text-white">
             <RandomGreetingButton></RandomGreetingButton>
           </div>
-          <div className="flex">
+          <div className="flex flex-col lg:flex-row-reverse lg:items-center lg:justify-between">
+            <div className="flex-shrink-0 mx-auto my-auto pl-0 lg:pl-4 pb-4 lg:pb-2 pr-0 lg:pr-3">
+              <img
+                src={selfie}
+                alt="selfie"
+                className="rounded-lg w-[310px] h-auto border-b-slate-900 border-2 dark:border-white"
+              />
+            </div>
             <div className="flex-grow">
               <p>
                 My name is Jung Ho Kwon, but you can call me John. I was born in
@@ -92,16 +99,16 @@ const Home: React.FC = () => {
                 !
               </p>
             </div>
-            <div className="flex-shrink-0 ml-4">
-              <img
-                src={selfie}
-                alt="selfie"
-                className="rounded-lg w-[310px] h-auto border-b-slate-900 border-2 dark:border-white"
-              />
-            </div>
           </div>
+          {/* <div className="flex-shrink-0 sm:ml-4 mx-auto pb-4 hidden lg:block">
+            <img
+              src={selfie}
+              alt="selfie"
+              className="rounded-lg w-[310px] h-auto border-b-slate-900 border-2 dark:border-white"
+            />
+          </div> */}
         </div>
-        <div className="w-1/2 h-100 rounded-lg border dark:border-gray-700 p-4">
+        <div className="w-1/2 h-100 rounded-lg border dark:border-gray-700 p-4 min-w-[400px]">
           <div className="text-xl font-bold pb-4 dark:text-white">projects</div>
           <div className="flex space-x-4 p-3 overflow-auto scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-gray-700 scrollbar-track-gray-300 dark:scrollbar-track-gray-800">
             {cardEntries.map((entry, index) => (
@@ -118,7 +125,7 @@ const Home: React.FC = () => {
         <a
           href="https://github.com/skjohnkwon/johnkwon.net"
           target="_blank"
-          className="mt-2 text-xs text-center dark:text-gray-300 hover:cursor-none generic-hover"
+          className="mt-2 text-xs text-center dark:text-gray-300 hover:cursor-none generic-hover pb-4"
         >
           vite + react + typescript + tailwindcss + shadcn/ui deployed on aws
           amplify
