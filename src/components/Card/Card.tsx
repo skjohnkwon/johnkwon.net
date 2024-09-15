@@ -3,7 +3,7 @@ import React from "react";
 interface Props {
   title: string;
   description: string;
-  link: string;
+  link?: string;
 }
 
 const Card = (props: Props) => {
