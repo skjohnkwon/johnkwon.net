@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Card from "@/components/Card/Card";
 import selfie from "../../assets/selfie.png";
 import RandomGreetingButton from "@/components/RandomGreetingButton/RandomGreetingButton";
@@ -44,6 +44,27 @@ const cardEntries: CardMetadata[] = [
 ];
 
 const Home: React.FC = () => {
+  const projectContainerRef = useRef<HTMLDivElement>(null);
+  const itemToScrollRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const projectContainer = projectContainerRef.current;
+    const itemToScroll = itemToScrollRef.current;
+
+    if (projectContainer && itemToScroll) {
+      const handleWheel = (e: WheelEvent) => {
+        if (Math.abs(e.deltaY) > 0) {
+          e.preventDefault();
+          itemToScroll.scrollLeft += e.deltaY;
+        }
+      };
+
+      projectContainer.addEventListener("wheel", handleWheel);
+
+      return () => {
+        projectContainer.removeEventListener("wheel", handleWheel);
+      };
+    }
+  }, []);
   return (
     <div className="flex flex-col min-h-[95vh] dark:bg-gray-900 dark:text-white">
       <div className="flex flex-col items-center space-y-4 flex-grow justify-center pt-28 lg:min-h-[100vh]">
@@ -101,9 +122,20 @@ const Home: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="w-[80vw] xl:w-[1100px] h-100 rounded-lg border dark:border-gray-700 p-4 min-w-[320px]">
-          <div className="text-xl font-bold pb-4 dark:text-white">projects</div>
-          <div className="flex space-x-4 p-3 overflow-auto scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-gray-700 scrollbar-track-gray-300 dark:scrollbar-track-gray-800">
+        <div
+          className="w-[80vw] xl:w-[1100px] h-100 rounded-lg border dark:border-gray-700 p-4 min-w-[320px] overflow-x-auto"
+          ref={projectContainerRef}
+        >
+          <div
+            id="itemToScroll"
+            className="text-xl font-bold pb-4 dark:text-white"
+          >
+            projects
+          </div>
+          <div
+            ref={itemToScrollRef}
+            className="flex space-x-4 p-3 overflow-auto scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-gray-700 scrollbar-track-gray-300 dark:scrollbar-track-gray-800"
+          >
             {cardEntries.map((entry, index) => (
               <div key={index} className="flex-shrink-0">
                 <Card
