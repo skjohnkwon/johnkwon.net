@@ -129,6 +129,10 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
+  const handleToggleClick = (event: React.MouseEvent) => {
+    event.stopPropagation();
+  };
+
   return (
     <div>
       <div className="hidden lg:block">
@@ -141,7 +145,9 @@ const Navbar = () => {
         >
           <p className="font-bold italic">
             john kwon{"  "}
-            <DarkModeToggle></DarkModeToggle>
+            <span onClick={handleToggleClick}>
+              <DarkModeToggle />
+            </span>
           </p>
           <span className="text-xl">{isOpen ? "-" : "+"}</span>
         </div>
