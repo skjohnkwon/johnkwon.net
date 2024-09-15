@@ -53,7 +53,7 @@ const Home: React.FC = () => {
           <div className="w-1/2 h-96 border p-4 overflow-auto rounded-lg">
             <div className="text-xl font-bold pb-4">about me</div>
             <img
-              src="/src/assets/selfie.JPG"
+              src="/src/assets/selfie.png"
               alt="selfie"
               className="rounded-lg w-52 h-auto float-left mr-3 border-b-slate-900 border-2"
             />
