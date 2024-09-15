@@ -46,8 +46,8 @@ const cardEntries: CardMetadata[] = [
 const Home: React.FC = () => {
   return (
     <div className="flex flex-col min-h-[95vh] dark:bg-gray-900 dark:text-white">
-      <div className="flex flex-col items-center space-y-4 flex-grow justify-center pt-32">
-        <div className="w-1/2 h-[100] border dark:border-gray-700 p-4 rounded-lg min-w-[320px]">
+      <div className="flex flex-col items-center space-y-4 flex-grow justify-center pt-28 lg:min-h-[100vh]">
+        <div className="h-[100] border dark:border-gray-700 p-4 rounded-lg w-[80vw] xl:w-[1100px]">
           <div className="text-xl font-bold pb-4 lg:pb-2 dark:text-white">
             <RandomGreetingButton />
           </div>
@@ -101,7 +101,7 @@ const Home: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="w-1/2 h-100 rounded-lg border dark:border-gray-700 p-4 min-w-[320px]">
+        <div className="w-[80vw] xl:w-[1100px] h-100 rounded-lg border dark:border-gray-700 p-4 min-w-[320px]">
           <div className="text-xl font-bold pb-4 dark:text-white">projects</div>
           <div className="flex space-x-4 p-3 overflow-auto scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-gray-700 scrollbar-track-gray-300 dark:scrollbar-track-gray-800">
             {cardEntries.map((entry, index) => (
