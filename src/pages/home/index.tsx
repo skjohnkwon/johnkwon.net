@@ -111,7 +111,7 @@ const Home: React.FC = () => {
             ))}
           </div>
         </div>
-        <div className="mt-2 text-sm text-center dark:text-gray-300">
+        <div className="mt-2 text-xs text-center dark:text-gray-300">
           vite + react + typescript + tailwindcss + shadcn/ui deployed on aws
           amplify
         </div>
