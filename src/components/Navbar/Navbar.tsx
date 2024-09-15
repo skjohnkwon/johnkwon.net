@@ -12,7 +12,7 @@ import {
 
 const Navbar = () => {
   return (
-    <div className="p-3 space-x-4 text-xl">
+    <div className="pl-5 p-3 space-x-4 text-xl">
       <p className="inline cursor-default font-bold italic">john kwon</p>
       <span className="ml-1">|</span>
       <a

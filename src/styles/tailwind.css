@@ -63,3 +63,13 @@
 .navbar-link {
   @apply hover:text-johnkwonBlue hover:underline cursor-pointer;
 }
+
+/* Hide scrollbar for WebKit browsers (Chrome, Safari, etc.) */
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox */
+.scrollbar-hidden {
+  scrollbar-width: none; /* Firefox */
+}
