@@ -19,7 +19,7 @@ const Navbar = () => {
       <a
         href="https://github.com/skjohnkwon"
         target="_blank"
-        className="navbar-link dark:text-white hover:dark:text-red-400"
+        className="navbar-link generic-hover"
       >
         github
       </a>
@@ -27,7 +27,7 @@ const Navbar = () => {
       <a
         href="https://www.linkedin.com/in/jung-ho-kwon/"
         target="_blank"
-        className="navbar-link dark:text-white hover:dark:text-red-400"
+        className="navbar-link generic-hover"
       >
         linkedin
       </a>
@@ -35,7 +35,7 @@ const Navbar = () => {
       <a
         href="https://docs.google.com/document/d/1STD2EDd2iBYpMHL3gxBeMLANmx4cBMKN/edit?usp=sharing&ouid=100261606684662946327&rtpof=true&sd=true"
         target="_blank"
-        className="navbar-link dark:text-white hover:dark:text-red-400"
+        className="navbar-link generic-hover"
       >
         resume
       </a>
@@ -50,7 +50,7 @@ const Navbar = () => {
               <NavigationMenuContent className="text-gray-400 flex flex-col gap-3 p-2 w-auto dark:bg-gray-900 dark:text-gray-400 rounded-lg">
                 <NavigationMenuLink>
                   <a
-                    className="navbar-link dark:text-white hover:dark:text-red-400"
+                    className="navbar-link generic-hover"
                     target="_blank"
                     href="https://soundcloud.com/typhoondll"
                   >
@@ -59,7 +59,7 @@ const Navbar = () => {
                 </NavigationMenuLink>
                 <NavigationMenuLink>
                   <a
-                    className="navbar-link dark:text-white hover:dark:text-red-400"
+                    className="navbar-link generic-hover"
                     target="_blank"
                     href="https://www.youtube.com/c/prodtyphoon"
                   >

@@ -73,3 +73,11 @@
 .scrollbar-hidden {
   scrollbar-width: none; /* Firefox */
 }
+
+.generic-hover {
+  /* Light mode hover and active styles */
+  @apply hover:text-blue-800 active:text-red-600;
+
+  /* Dark mode hover and active styles */
+  @apply dark:hover:text-blue-300 dark:active:text-red-400;
+}

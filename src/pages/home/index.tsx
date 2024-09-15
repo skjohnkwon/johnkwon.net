@@ -1,6 +1,7 @@
 import React from "react";
 import Card from "@/components/Card/Card";
 import selfie from "../../assets/selfie.png";
+import RandomGreetingButton from "@/components/RandomGreetingButton/RandomGreetingButton";
 
 interface CardMetadata {
   title: string;
@@ -46,18 +47,20 @@ const Home: React.FC = () => {
   return (
     <div className="flex flex-col min-h-[95vh] dark:bg-gray-900 dark:text-white">
       <div className="flex flex-col items-center space-y-4 flex-grow justify-center">
-        <div className="w-1/2 h-[100] border dark:border-gray-700 p-4 overflow-auto rounded-lg">
-          <div className="text-xl font-bold pb-4 dark:text-white">about me</div>
+        <div className="w-1/2 h-[100] border dark:border-gray-700 p-4 rounded-lg">
+          <div className="text-xl font-bold pb-4 dark:text-white">
+            <RandomGreetingButton></RandomGreetingButton>
+          </div>
           <div className="flex">
             <div className="flex-grow">
               <p>
-                Hi, my name is Jung Ho Kwon, but you can call me John. I was
-                born in South Korea and moved to America when I was very young.
-                I love finding ways to use my skills as a programmer to solve
-                problems in the real world, as well as my own personal issues. I
-                first started coding Minecraft plugins for servers as a hobby,
-                and it quickly grew into an interest that I would later pursue
-                in university (CSUN) as a computer science major.
+                My name is Jung Ho Kwon, but you can call me John. I was born in
+                South Korea and moved to America when I was very young. I love
+                finding ways to use my skills as a programmer to solve problems
+                in the real world, as well as my own personal issues. I first
+                started coding Minecraft plugins for servers as a hobby, and it
+                quickly grew into an interest that I would later pursue in
+                university (CSUN) as a computer science major.
               </p>
               <br />
               <p>
@@ -84,8 +87,9 @@ const Home: React.FC = () => {
                   target="_blank"
                   href="https://usemogul.com/"
                 >
-                  Check it out here!
+                  Check it out here
                 </a>
+                !
               </p>
             </div>
             <div className="flex-shrink-0 ml-4">
@@ -111,10 +115,14 @@ const Home: React.FC = () => {
             ))}
           </div>
         </div>
-        <div className="mt-2 text-xs text-center dark:text-gray-300">
+        <a
+          href="https://github.com/skjohnkwon/johnkwon.net"
+          target="_blank"
+          className="mt-2 text-xs text-center dark:text-gray-300 hover:cursor-none generic-hover"
+        >
           vite + react + typescript + tailwindcss + shadcn/ui deployed on aws
           amplify
-        </div>
+        </a>
       </div>
     </div>
   );
