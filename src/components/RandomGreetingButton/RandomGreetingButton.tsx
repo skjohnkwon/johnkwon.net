@@ -13,16 +13,13 @@ const randomGreetings = [
   "hello there",
   "hola",
   "bonjour",
-  "ciao",
   "hej!",
   "i am severely depressed",
   "hows its going bros its ya boi",
   "greetings from the void",
-  "greeting hi thewarowl greets you",
-  "*teleports behind you* pshh... nothin personnel... kid...",
+  "*teleports behind you* pshh... nothin personal kid...",
   "greetings, traveler",
-  "heads up guardian!",
-  "the moon is haunted...",
+  "heads up guardian! the moon is haunted...",
   "TOP OF THE MORNING TO YA LADDIES",
   "hello everyone, my name is markiplier...just kidding",
   "greetings, fellow human",
@@ -42,7 +39,7 @@ const randomGreetings = [
   "JIN-YAAAAAAANNNNGGG!!!!!!!!!!!",
   "****CLICK HERE FOR FREE V-BUCKS**** (jk)",
   "itsa me, mario!",
-  "do you ever just feel like a plastic bag?",
+  "do you ever just feel like a plastic bag? drifting through the wind? wanting to start again?",
 ];
 
 const RandomGreetingButton = () => {

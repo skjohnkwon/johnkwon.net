@@ -61,28 +61,24 @@
   @apply hover:text-johnkwonBlue hover:underline cursor-pointer;
 }
 
-/* Hide scrollbar for WebKit browsers (Chrome, Safari, etc.) */
 .scrollbar-hidden::-webkit-scrollbar {
   display: none;
 }
 
-/* Hide scrollbar for Firefox */
 .scrollbar-hidden {
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none;
 }
 
 .generic-hover {
-  /* Light mode hover and active styles */
   @apply hover:text-blue-800 active:text-red-600;
 
-  /* Dark mode hover and active styles */
   @apply dark:hover:text-blue-300 dark:active:text-red-400;
 }
 
 @layer base {
   html,
   body {
-    @apply bg-white dark:bg-gray-900; /* Set the background for light/dark mode */
-    color-scheme: light dark; /* For better support for dark mode in certain browsers */
+    @apply bg-white dark:bg-gray-900;
+    @apply lg:overflow-y-hidden overflow-auto;
   }
 }
