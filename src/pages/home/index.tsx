@@ -46,28 +46,28 @@ const cardEntries: CardMetadata[] = [
 const Home: React.FC = () => {
   return (
     <div className="flex flex-col min-h-[95vh] dark:bg-gray-900 dark:text-white">
-      <div className="flex flex-col items-center space-y-4 flex-grow justify-center">
-        <div className="w-1/2 h-[100] border dark:border-gray-700 p-4 rounded-lg min-w-[400px]">
+      <div className="flex flex-col items-center space-y-4 flex-grow justify-center pt-32">
+        <div className="w-1/2 h-[100] border dark:border-gray-700 p-4 rounded-lg min-w-[320px]">
           <div className="text-xl font-bold pb-4 lg:pb-2 dark:text-white">
-            <RandomGreetingButton></RandomGreetingButton>
+            <RandomGreetingButton />
           </div>
-          <div className="flex flex-col lg:flex-row-reverse lg:items-center lg:justify-between">
-            <div className="flex-shrink-0 mx-auto my-auto pl-0 lg:pl-4 pb-4 lg:pb-2 pr-0 lg:pr-3">
+          <div className="flex flex-col xl:flex-row-reverse xl:items-center xl:justify-between">
+            <div className="flex-shrink-0 mx-auto my-auto pl-0 xl:pl-4 pb-4 xl:pb-2 pr-0 xl:pr-3">
               <img
                 src={selfie}
                 alt="selfie"
-                className="rounded-lg w-[310px] h-auto border-b-slate-900 border-2 dark:border-white"
+                className="rounded-lg w-[310px] h-auto border-2 dark:border-white"
               />
             </div>
             <div className="flex-grow">
               <p>
-                My name is Jung Ho Kwon, but you can call me John. I was born in
-                South Korea and moved to America when I was very young. I love
-                finding ways to use my skills as a programmer to solve problems
-                in the real world, as well as my own personal issues. I first
-                started coding Minecraft plugins for servers as a hobby, and it
-                quickly grew into an interest that I would later pursue in
-                university (CSUN) as a computer science major.
+                Hi! My name is Jung Ho Kwon, but you can call me John. I was
+                born in South Korea and moved to America when I was very young.
+                I love finding ways to use my skills as a programmer to solve
+                problems in the real world, as well as my own personal issues. I
+                first started coding Minecraft plugins for servers as a hobby,
+                and it quickly grew into an interest that I would later pursue
+                in university (CSUN) as a computer science major.
               </p>
               <br />
               <p>
@@ -100,15 +100,8 @@ const Home: React.FC = () => {
               </p>
             </div>
           </div>
-          {/* <div className="flex-shrink-0 sm:ml-4 mx-auto pb-4 hidden lg:block">
-            <img
-              src={selfie}
-              alt="selfie"
-              className="rounded-lg w-[310px] h-auto border-b-slate-900 border-2 dark:border-white"
-            />
-          </div> */}
         </div>
-        <div className="w-1/2 h-100 rounded-lg border dark:border-gray-700 p-4 min-w-[400px]">
+        <div className="w-1/2 h-100 rounded-lg border dark:border-gray-700 p-4 min-w-[320px]">
           <div className="text-xl font-bold pb-4 dark:text-white">projects</div>
           <div className="flex space-x-4 p-3 overflow-auto scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-gray-700 scrollbar-track-gray-300 dark:scrollbar-track-gray-800">
             {cardEntries.map((entry, index) => (

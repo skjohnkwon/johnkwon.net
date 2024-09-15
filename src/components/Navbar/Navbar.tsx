@@ -134,13 +134,13 @@ const Navbar = () => {
   };
 
   return (
-    <div>
+    <div className="fixed top-0 w-full z-50">
       <div className="hidden lg:block">
         <FullNavbar />
       </div>
       <div className="block lg:hidden mb-5">
         <div
-          className="flex justify-between items-center cursor-pointer text-xl dark:bg-gray-950 dark:text-white p-5"
+          className="flex justify-between items-center cursor-pointer text-xl bg-slate-200 dark:bg-gray-950 dark:text-white p-5"
           onClick={toggleMenu}
         >
           <p className="font-bold italic">
