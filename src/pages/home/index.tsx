@@ -44,81 +44,79 @@ const cardEntries: CardMetadata[] = [
 
 const Home: React.FC = () => {
   return (
-    <>
-      <div className="flex flex-col min-h-[95vh]">
-        <div className="flex flex-col items-center space-y-4 flex-grow justify-center">
-          <div className="w-1/2 h-[100] border p-4 overflow-auto rounded-lg">
-            <div className="text-xl font-bold pb-4">about me</div>
-            <div className="flex">
-              <div className="flex-grow">
-                <p>
-                  Hi, my name is Jung Ho Kwon, but you can call me John. I was
-                  born in South Korea and moved to America when I was very
-                  young. I love finding ways to use my skills as a programmer to
-                  solve problems in the real world, as well as my own personal
-                  issues. I first started coding Minecraft plugins for servers
-                  as a hobby, and it quickly grew into an interest that I would
-                  later pursue in university (CSUN) as a computer science major.
-                </p>
-                <br></br>
-                <p>
-                  I also have a huge passion for music. As a music producer, I
-                  have worked with many artists across all genres, accumulating
-                  more than 15 million streams on Spotify alone. I am always
-                  looking for ways to combine my love for music and programming
-                  to create something useful for artists.
-                </p>
-                <br></br>
-                <p>
-                  Feel free to reach out to me at{" "}
-                  <a
-                    className="text-blue-500 hover:text-red-600"
-                    href="mailto:sk.johnkwon@gmail.com"
-                  >
-                    sk.johnkwon@gmail.com
-                  </a>
-                  ! Currently, I am working as a full-time software engineer
-                  intern at Mogul, a platform that helps artists understand
-                  their revenue and earn them more money.{" "}
-                  <a
-                    className="text-blue-500 hover:text-red-600"
-                    target="_blank"
-                    href="https://usemogul.com/"
-                  >
-                    Check it out here!
-                  </a>
-                </p>
-              </div>
-              <div className="flex-shrink-0 ml-4">
-                <img
-                  src={selfie}
-                  alt="selfie"
-                  className="rounded-lg w-[310px] h-auto border-b-slate-900 border-2"
-                />
-              </div>
+    <div className="flex flex-col min-h-[95vh] dark:bg-gray-900 dark:text-white">
+      <div className="flex flex-col items-center space-y-4 flex-grow justify-center">
+        <div className="w-1/2 h-[100] border dark:border-gray-700 p-4 overflow-auto rounded-lg">
+          <div className="text-xl font-bold pb-4 dark:text-white">about me</div>
+          <div className="flex">
+            <div className="flex-grow">
+              <p>
+                Hi, my name is Jung Ho Kwon, but you can call me John. I was
+                born in South Korea and moved to America when I was very young.
+                I love finding ways to use my skills as a programmer to solve
+                problems in the real world, as well as my own personal issues. I
+                first started coding Minecraft plugins for servers as a hobby,
+                and it quickly grew into an interest that I would later pursue
+                in university (CSUN) as a computer science major.
+              </p>
+              <br />
+              <p>
+                I also have a huge passion for music. As a music producer, I
+                have worked with many artists across all genres, accumulating
+                more than 15 million streams on Spotify alone. I am always
+                looking for ways to combine my love for music and programming to
+                create something useful for artists.
+              </p>
+              <br />
+              <p>
+                Feel free to reach out to me at{" "}
+                <a
+                  className="text-blue-500 hover:text-red-600"
+                  href="mailto:sk.johnkwon@gmail.com"
+                >
+                  sk.johnkwon@gmail.com
+                </a>
+                ! Currently, I am working as a full-time software engineer
+                intern at Mogul, a platform that helps artists understand their
+                revenue and earn them more money.{" "}
+                <a
+                  className="text-blue-500 hover:text-red-600"
+                  target="_blank"
+                  href="https://usemogul.com/"
+                >
+                  Check it out here!
+                </a>
+              </p>
             </div>
-          </div>
-          <div className="w-1/2 h-100 rounded-lg border p-4">
-            <div className="text-xl font-bold pb-4">projects</div>
-            <div className="flex space-x-4 p-3 overflow-auto scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-gray-300">
-              {cardEntries.map((entry, index) => (
-                <div key={index} className="flex-shrink-0">
-                  <Card
-                    title={entry.title}
-                    description={entry.description}
-                    link={entry.link}
-                  />
-                </div>
-              ))}
+            <div className="flex-shrink-0 ml-4">
+              <img
+                src={selfie}
+                alt="selfie"
+                className="rounded-lg w-[310px] h-auto border-b-slate-900 border-2 dark:border-white"
+              />
             </div>
-          </div>
-          <div className="mt-2 text-sm text-center">
-            vite + react + typescript + tailwindcss + shadcn/ui deployed on aws
-            amplify
           </div>
         </div>
+        <div className="w-1/2 h-100 rounded-lg border dark:border-gray-700 p-4">
+          <div className="text-xl font-bold pb-4 dark:text-white">projects</div>
+          <div className="flex space-x-4 p-3 overflow-auto scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-gray-700 scrollbar-track-gray-300 dark:scrollbar-track-gray-800">
+            {cardEntries.map((entry, index) => (
+              <div key={index} className="flex-shrink-0">
+                <Card
+                  title={entry.title}
+                  description={entry.description}
+                  link={entry.link}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="mt-2 text-sm text-center dark:text-gray-300">
+          vite + react + typescript + tailwindcss + shadcn/ui deployed on aws
+          amplify
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 

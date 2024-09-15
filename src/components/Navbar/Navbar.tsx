@@ -2,54 +2,55 @@ import React from "react";
 import {
   NavigationMenu,
   NavigationMenuContent,
-  //NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  //NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
+import DarkModeToggle from "../DarkModeButton/DarkModeToggle";
 
 const Navbar = () => {
   return (
-    <div className="pl-5 p-3 space-x-4 text-xl">
-      <p className="inline cursor-default font-bold italic">john kwon</p>
-      <span className="ml-1">+</span>
+    <div className="pl-5 p-3 space-x-4 text-xl dark:bg-gray-900 dark:text-white">
+      <p className="inline cursor-default font-bold italic dark:text-white">
+        john kwon
+      </p>
+      <span className="ml-1 dark:text-white">+</span>
       <a
         href="https://github.com/skjohnkwon"
         target="_blank"
-        className="navbar-link"
+        className="navbar-link dark:text-white hover:dark:text-red-400"
       >
         github
       </a>
-      <span className="ml-1">+</span>
+      <span className="ml-1 dark:text-white">+</span>
       <a
         href="https://www.linkedin.com/in/jung-ho-kwon/"
         target="_blank"
-        className="navbar-link"
+        className="navbar-link dark:text-white hover:dark:text-red-400"
       >
         linkedin
       </a>
-      <span className="ml-1">+</span>
+      <span className="ml-1 dark:text-white">+</span>
       <a
         href="https://docs.google.com/document/d/1STD2EDd2iBYpMHL3gxBeMLANmx4cBMKN/edit?usp=sharing&ouid=100261606684662946327&rtpof=true&sd=true"
         target="_blank"
-        className="navbar-link"
+        className="navbar-link dark:text-white hover:dark:text-red-400"
       >
         resume
       </a>
-      <span className="ml-1">+</span>
+      <span className="ml-1 dark:text-white">+</span>
       <div className="inline-flex">
-        <NavigationMenu>
+        <NavigationMenu className="">
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="text-xl">
+              <NavigationMenuTrigger className="text-xl dark:text-white">
                 my music
               </NavigationMenuTrigger>
-              <NavigationMenuContent className="flex flex-col gap-3 p-2 w-auto text-gray-400">
+              <NavigationMenuContent className="text-gray-400 flex flex-col gap-3 p-2 w-auto dark:bg-gray-900 dark:text-gray-400 rounded-lg">
                 <NavigationMenuLink>
                   <a
-                    className="navbar-link"
+                    className="navbar-link dark:text-white hover:dark:text-red-400"
                     target="_blank"
                     href="https://soundcloud.com/typhoondll"
                   >
@@ -58,27 +59,19 @@ const Navbar = () => {
                 </NavigationMenuLink>
                 <NavigationMenuLink>
                   <a
-                    className="navbar-link"
+                    className="navbar-link dark:text-white hover:dark:text-red-400"
                     target="_blank"
                     href="https://www.youtube.com/c/prodtyphoon"
                   >
                     youtube
                   </a>
                 </NavigationMenuLink>
-                {/* <NavigationMenuLink>
-                  <a
-                    className="navbar-link"
-                    target="_blank"
-                    href="https://soundcloud.com/typhoondll"
-                  >
-                    beatstars
-                  </a>
-                </NavigationMenuLink> */}
               </NavigationMenuContent>
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
       </div>
+      <DarkModeToggle />
     </div>
   );
 };
