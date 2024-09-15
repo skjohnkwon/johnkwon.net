@@ -41,6 +41,7 @@ const FullNavbar = () => {
       </p>
       {navbarItems.map((item, index) => (
         <React.Fragment key={index}>
+          <span className="ml-1 dark:text-white">+</span>
           {item.isDropdown ? (
             <div className="inline-flex">
               <NavigationMenu>
@@ -68,7 +69,6 @@ const FullNavbar = () => {
             </div>
           ) : (
             <>
-              <span className="ml-1 dark:text-white">+</span>
               <a
                 href={item.link}
                 target="_blank"
