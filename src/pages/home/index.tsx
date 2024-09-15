@@ -12,7 +12,7 @@ const cardEntries: CardMetadata[] = [
   {
     title: "SpeakMentor",
     description:
-      "Along with a team of developers, we created a platform that allows people to practice their English pronunciation • Used React, Django, and PostgreSQL • Implemented a feature that allows users to record their voice and get useful AI generated feedback based on an analysis of the audio.",
+      "Along with a team of developers, we created a platform that allows people to practice their English pronunciation • Used React, Django, and PostgreSQL • Implemented a feature that allows users to record their voice and get useful AI generated feedback based on an analysis of the audio, as well as an AI powered chatbot to help users practice conversations.",
     link: "https://github.com/skjohnkwon/SpeakMentor-Django",
   },
   {
@@ -31,7 +31,7 @@ const cardEntries: CardMetadata[] = [
   {
     title: "pathfinder",
     description:
-      "My first introduction to programming • Created a program that finds the shortest path between two points on a grid • Used React to create a visual representation of the grid and Dijkstra's + A* algorithm to find the shortest path.",
+      "My first introduction to programming with React • Created a program that finds the shortest path between two points on a grid • Used React to create a visual representation of the grid and Dijkstra's + A* algorithm to find the shortest path.",
     link: "https://github.com/skjohnkwon/pathfinder",
   },
   {
@@ -46,46 +46,58 @@ const Home: React.FC = () => {
   return (
     <>
       <div className="flex flex-col min-h-[95vh]">
-        {" "}
-        {/* Add padding-top to account for navbar height */}
-        {/* Container to stack sections vertically */}
         <div className="flex flex-col items-center space-y-4 flex-grow justify-center">
-          {/* About me section */}
-          <div className="w-1/2 h-96 border p-4 overflow-auto rounded-lg">
+          <div className="w-1/2 h-[100] border p-4 overflow-auto rounded-lg">
             <div className="text-xl font-bold pb-4">about me</div>
-            <img
-              src={selfie}
-              alt="selfie"
-              className="rounded-lg w-52 h-auto float-left mr-3 border-b-slate-900 border-2"
-            />
-            <p>
-              Hi, my name is Jung Ho Kwon, but you can call me John. I was born
-              in South Korea and moved to America when I was very young. As a
-              developer, I am always finding ways to use my skills as a
-              programmer to solve problems in the real world, as well as my own
-              personal issues. I first started coding Minecraft plugins for
-              servers as a hobby, and it quickly grew into an interest that I
-              would later pursue at university (CSUN) as a computer science
-              major.
-            </p>
-            <p>
-              I also have a huge passion for music. As a music producer, I have
-              worked with many artists across all genres, accumulating more than
-              15 million streams on Spotify alone. I am always looking for ways
-              to combine my love for music and programming to create something
-              new and exciting. Feel free to reach out to me at{" "}
-              <a
-                className="text-blue-500 hover:text-red-600"
-                href="mailto:sk.johnkwon@gmail.com"
-              >
-                sk.johnkwon@gmail.com
-              </a>
-              ! Currently, I am working as a full-time software engineer intern
-              at Mogul, a platform that helps artists understand their revenue
-              and earn them more money.
-            </p>
+            <div className="flex">
+              <div className="flex-grow">
+                <p>
+                  Hi, my name is Jung Ho Kwon, but you can call me John. I was
+                  born in South Korea and moved to America when I was very
+                  young. I love finding ways to use my skills as a programmer to
+                  solve problems in the real world, as well as my own personal
+                  issues. I first started coding Minecraft plugins for servers
+                  as a hobby, and it quickly grew into an interest that I would
+                  later pursue in university (CSUN) as a computer science major.
+                </p>
+                <br></br>
+                <p>
+                  I also have a huge passion for music. As a music producer, I
+                  have worked with many artists across all genres, accumulating
+                  more than 15 million streams on Spotify alone. I am always
+                  looking for ways to combine my love for music and programming
+                  to create something useful for artists.
+                </p>
+                <br></br>
+                <p>
+                  Feel free to reach out to me at{" "}
+                  <a
+                    className="text-blue-500 hover:text-red-600"
+                    href="mailto:sk.johnkwon@gmail.com"
+                  >
+                    sk.johnkwon@gmail.com
+                  </a>
+                  ! Currently, I am working as a full-time software engineer
+                  intern at Mogul, a platform that helps artists understand
+                  their revenue and earn them more money.{" "}
+                  <a
+                    className="text-blue-500 hover:text-red-600"
+                    target="_blank"
+                    href="https://usemogul.com/"
+                  >
+                    Check it out here!
+                  </a>
+                </p>
+              </div>
+              <div className="flex-shrink-0 ml-4">
+                <img
+                  src={selfie}
+                  alt="selfie"
+                  className="rounded-lg w-[310px] h-auto border-b-slate-900 border-2"
+                />
+              </div>
+            </div>
           </div>
-          {/* Projects section */}
           <div className="w-1/2 h-100 rounded-lg border p-4">
             <div className="text-xl font-bold pb-4">projects</div>
             <div className="flex space-x-4 p-3 overflow-auto scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-gray-300">
@@ -101,7 +113,8 @@ const Home: React.FC = () => {
             </div>
           </div>
           <div className="mt-2 text-sm text-center">
-            react + typescript + tailwindcss + shadcn/ui deployed on aws amplify
+            vite + react + typescript + tailwindcss + shadcn/ui deployed on aws
+            amplify
           </div>
         </div>
       </div>
