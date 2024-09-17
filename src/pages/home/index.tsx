@@ -82,13 +82,12 @@ const Home: React.FC = () => {
             </div>
             <div className="flex-grow">
               <p>
-                Hi! My name is Jung Ho Kwon, but you can call me John. I was
-                born in South Korea and moved to America when I was very young.
-                I love finding ways to use my skills as a programmer to solve
-                problems in the real world, as well as my own personal issues. I
-                first started coding Minecraft plugins for servers as a hobby,
-                and it quickly grew into an interest that I would later pursue
-                in university (CSUN) as a computer science major.
+                Hi! My name is Jung Ho Kwon, but you can call me John. I love
+                finding ways to use my skills as a programmer to solve problems
+                in the real world, as well as my own personal issues. I first
+                started coding Minecraft plugins for servers as a hobby, and it
+                quickly grew into an interest that I would later pursue in
+                university (CSUN) as a computer science major.
               </p>
               <br />
               <p>
