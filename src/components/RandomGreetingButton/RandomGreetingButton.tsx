@@ -81,11 +81,8 @@ const RandomGreetingButton = () => {
 
   return (
     <div className="hover:cursor-none generic-hover">
-      <button
-        className="flex w-full hover:underline"
-        onClick={getRandomGreeting}
-      >
-        {greeting}
+      <button className="flex w-full" onClick={getRandomGreeting}>
+        ✨ <span className="hover:underline">{greeting}</span>
       </button>
     </div>
   );
