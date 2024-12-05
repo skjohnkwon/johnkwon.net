@@ -57,5 +57,5 @@ export default {
   variants: {
     scrollbar: ["rounded", "dark"],
   },
-  plugins: [require("tailwindcss-animate"), require("tailwind-scrollbar")],
+  plugins: ["tailwindcss-animate", "tailwind-scrollbar"],
 };

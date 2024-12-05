@@ -83,19 +83,18 @@ const Home: React.FC = () => {
             <div className="flex-grow">
               <p>
                 Hi! My name is Jung Ho Kwon, but you can call me John. I love
-                finding ways to use my skills as a programmer to solve problems
-                in the real world, as well as my own personal issues. I first
-                started coding Minecraft plugins for servers as a hobby, and it
-                quickly grew into an interest that I would later pursue in
-                university (CSUN) as a computer science major.
+                finding ways to use my skills as a programmer to make life
+                easier for everybody. I first started coding Minecraft plugins
+                for servers as a hobby, and it quickly grew into an interest
+                that I would later pursue in university (CSUN) as a computer
+                science major.
               </p>
               <br />
               <p>
                 I also have a huge passion for music. As a music producer, I
-                have worked with many artists across all genres, accumulating
-                more than 15 million streams on Spotify alone. I am always
-                looking for ways to combine my love for music and programming to
-                create something useful for artists.
+                have collaborated with many artists across all genres (except
+                country), all over the world. I am credited on over 60 songs and
+                have a total of more than 15 million streams.
               </p>
               <br />
               <p>
@@ -149,7 +148,7 @@ const Home: React.FC = () => {
         <a
           href="https://github.com/skjohnkwon/johnkwon.net"
           target="_blank"
-          className="mt-2 text-xs text-center dark:text-gray-300 hover:cursor-none generic-hover pb-4"
+          className="mt-2 text-xs text-center dark:text-gray-300 hover:cursor-zoom-in generic-hover pb-4"
         >
           vite + react + typescript + tailwindcss + shadcn/ui deployed on aws
           amplify
