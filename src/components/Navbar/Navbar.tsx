@@ -23,14 +23,14 @@ const navbarItems: NavbarItems[] = [
     title: "resume",
     link: "https://docs.google.com/document/d/1STD2EDd2iBYpMHL3gxBeMLANmx4cBMKN/edit?usp=sharing&ouid=100261606684662946327&rtpof=true&sd=true",
   },
-  {
-    title: "my music",
-    isDropdown: true,
-    dropdownItems: [
-      { title: "soundcloud", link: "https://soundcloud.com/typhoondll" },
-      { title: "youtube", link: "https://www.youtube.com/c/prodtyphoon" },
-    ],
-  },
+  // {
+  //   title: "my music",
+  //   isDropdown: true,
+  //   dropdownItems: [
+  //     { title: "soundcloud", link: "https://soundcloud.com/typhoondll" },
+  //     { title: "youtube", link: "https://www.youtube.com/c/prodtyphoon" },
+  //   ],
+  // },
 ];
 
 const FullNavbar = () => {

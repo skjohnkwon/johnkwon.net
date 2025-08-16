@@ -9,20 +9,15 @@ const randomGreetings = [
   "waaaazzzzzaaaaaaa :D",
   "howdy partner",
   "greetings earthling",
-  "if youre reading this, i am stuck in the backrooms please let me out",
   "hello there",
   "hola",
   "bonjour",
   "hej!",
   "hows its going bros its ya boi",
   "greetings, traveler",
-  "heads up guardian! the moon is haunted...",
   "hello, world",
-  "****CLICK HERE FOR FREE V-BUCKS**** (jk)",
-  "do you ever just feel like a plastic bag? drifting through the wind? wanting to start again?",
   "i like pineapples on my pizza",
   "[insert generic greeting here]",
-  "itd be so crazy if you clicked me and i did a backflip",
 ];
 
 const RandomGreetingButton = () => {

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import Card from "@/components/Card/Card";
-import selfie from "../../assets/selfie.png";
+import selfie from "../../assets/selfie.jpg";
 import RandomGreetingButton from "@/components/RandomGreetingButton/RandomGreetingButton";
 
 interface CardMetadata {
@@ -121,7 +121,7 @@ const Home: React.FC = () => {
           </div>
         </div>
         <div
-          className="w-[80vw] xl:w-[1100px] h-100 rounded-lg border dark:border-gray-700 p-4 min-w-[320px] overflow-x-auto"
+          className="w-[80vw] xl:w-[1100px] h-fit rounded-lg border dark:border-gray-700 p-4 min-w-[320px] overflow-x-auto"
           ref={projectContainerRef}
         >
           <div
@@ -135,7 +135,7 @@ const Home: React.FC = () => {
             className="flex space-x-4 p-3 overflow-auto scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-gray-700 scrollbar-track-gray-300 dark:scrollbar-track-gray-800"
           >
             {cardEntries.map((entry, index) => (
-              <div key={index} className="flex-shrink-0">
+              <div key={index} className="flex-shrink-0 h-[330px]">
                 <Card
                   title={entry.title}
                   description={entry.description}

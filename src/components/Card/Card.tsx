@@ -10,7 +10,7 @@ const Card = (props: Props) => {
   return (
     <a
       href={props.link}
-      className="w-80 h-72 rounded overflow-hidden cursor-pointer hover:transform hover:scale-[1.02] transition-transform block border border-gray-300 dark:border-gray-700 dark:bg-gray-800 generic-hover"
+      className="w-80 h-full rounded overflow-hidden cursor-pointer hover:transform hover:scale-[1.02] transition-transform block border border-gray-300 dark:border-gray-700 dark:bg-gray-800 generic-hover"
       target="_blank"
     >
       <div className="px-6 py-4">
