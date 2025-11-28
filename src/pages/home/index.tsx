@@ -105,9 +105,9 @@ const Home: React.FC = () => {
                 >
                   sk.johnkwon@gmail.com
                 </a>
-                ! Currently, I am working as a full-time software engineer
-                intern at Mogul, a platform that helps artists understand their
-                revenue and earn them more money.{" "}
+                ! Currently, I am working as a software engineer at Mogul, a
+                platform that helps artists understand their revenue and earn
+                them more money.{" "}
                 <a
                   className="text-blue-500 hover:text-red-600"
                   target="_blank"
