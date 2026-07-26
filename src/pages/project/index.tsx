@@ -121,7 +121,15 @@ const ProjectDetail: React.FC = () => {
           {project.screenshots.length > 0 && (
             <div className="border dark:border-gray-700 rounded-lg p-6">
               <div className="text-lg font-bold mb-4">screenshots</div>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {/* Phone screenshots tile happily four across; landscape desktop ones need
+                  the room, or every one of them is an unreadable thumbnail. */}
+              <div
+                className={
+                  project.wideScreenshots
+                    ? "grid grid-cols-1 lg:grid-cols-2 gap-4"
+                    : "grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+                }
+              >
                 {project.screenshots.map((shot, i) => (
                   <a
                     key={i}

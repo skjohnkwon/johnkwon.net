@@ -1,5 +1,12 @@
 // Single source of truth for the projects section + the /projects/:slug detail pages.
 
+import umakbangLibrary from "../assets/projects/umakbang-library.jpg";
+import umakbangPlaying from "../assets/projects/umakbang-playing.jpg";
+import umakbangActions from "../assets/projects/umakbang-actions.jpg";
+import umakbangMoveTo from "../assets/projects/umakbang-moveto.jpg";
+import umakbangSearch from "../assets/projects/umakbang-search.jpg";
+import umakbangVisualizers from "../assets/projects/umakbang-visualizers.jpg";
+import umakbangMini from "../assets/projects/umakbang-mini.jpg";
 import easyMangaLibrary from "../assets/projects/easy-manga-library.jpg";
 import easyMangaSettings from "../assets/projects/easy-manga-settings.jpg";
 import simpleSplitUpload from "../assets/projects/simple-split-upload.jpg";
@@ -27,12 +34,80 @@ export interface Project {
   tech: string[];
   features: string[];
   screenshots: Screenshot[];
+  // Desktop screenshots are landscape and dense; they need a wider grid than phone shots.
+  wideScreenshots?: boolean;
   // Optional external link (e.g. GitHub). When absent, the card still links to the detail page.
   repo?: string;
   liveLink?: { label: string; url: string };
 }
 
 export const projects: Project[] = [
+  {
+    slug: "umakbang",
+    title: "umakbang",
+    tagline:
+      "A desktop file explorer built for a music production library. (it's pronounced oo-mahk-bahng)",
+    cardDescription:
+      "A desktop file explorer built for a music production library • Indexes a quarter-million samples, stems and project files and stays browsable while it scans • Reads tempo, key and format straight from container headers, draws a waveform on every row, and plays anything in-window • Full file management, ratings, tags and real-time visualizers.",
+    overview: [
+      "My sample library had outgrown Explorer. Tens of thousands of one-shots, stems, bounces and FL Studio projects spread across drives, and no way to answer the questions I actually had: what's in this folder, how long is it, what tempo is it, and what does it sound like, without opening a DAW to find out.",
+      "umakbang is a file explorer built for that. It walks the tree and streams results in as it goes, so a library of a few hundred thousand files is browsable a second after launch rather than after a full scan. Every row draws its own waveform and plays in-window, so auditioning a folder of kicks is arrow-key, arrow-key, arrow-key.",
+      "The metadata is parsed in-house. WAV, AIFF, FLAC, MP3, MP4 and Ogg headers are read directly, a few hundred KB per file instead of a full decode, which is what makes duration, sample rate, bit depth and tempo appear for a whole library in seconds. Tempo that isn't in the headers gets worked out by analysing the audio, riding on the decode the waveform already performs.",
+      "It's also a real file manager: multi-select, cut/copy/paste, rename, delete to the recycle bin, drag and drop between folders or straight out into a DAW, star ratings and tags you can filter by. And because it's usually running while I work, it shrinks to a 300px mini player pinned above everything else.",
+    ],
+    platform: "Desktop · Windows / macOS / Linux",
+    tech: [
+      "Electron",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Web Audio API",
+      "Canvas",
+      "Vite",
+    ],
+    features: [
+      "Indexes a folder tree and streams results in as it walks, so a 250k-file library is browsable in seconds, with the saved index replayed on the next launch",
+      "Scanning runs in a separate utility process, so a sustained walk never freezes the window",
+      "Audio metadata parsed in-house from container headers: duration, sample rate, bit depth, channels, bitrate, plus BPM and musical key",
+      "Tempo detection by audio analysis for files whose headers and names don't say, riding on the decode the waveform already does",
+      "A waveform on every row, cached to disk after the first play, and the playing row doubles as the scrub target",
+      "Files served over a custom protocol with byte-range support, so seeking works and web security stays on. AIFF is rewrapped to WAV on the fly, since Chromium can't decode it",
+      "Full file management: multi-select, cut/copy/paste, duplicate, rename, delete to the recycle bin, new folders, and drag and drop into folders or out into a DAW",
+      "Star ratings and tags stored locally, usable as filters, plus a search syntax like ext:wav, bpm>120, key:Am, stars:4-5",
+      "Real-time visualizers (spectrogram, spectrum, rolling waveform, scope, levels, stereo field) that can read the app or the machine's own output",
+      "A mini player: a square window pinned above everything else, for when it's the thing playing while you work",
+      "Production stats read from FL Studio's per-project time tracking: hours actually spent, and where they went",
+    ],
+    screenshots: [
+      {
+        src: umakbangLibrary,
+        caption:
+          "Browsing a folder of kicks, a waveform per row, with something still playing",
+      },
+      {
+        src: umakbangPlaying,
+        caption: "Ratings, tags and detected tempo, with the visualizers live",
+      },
+      {
+        src: umakbangActions,
+        caption: "Every standard file action, on whatever is selected",
+      },
+      {
+        src: umakbangMoveTo,
+        caption: "Quick-move: the folders you file into, two clicks away",
+      },
+      { src: umakbangSearch, caption: "Search across the whole library" },
+      {
+        src: umakbangVisualizers,
+        caption: "Visualizers filling the window",
+      },
+      {
+        src: umakbangMini,
+        caption: "The mini player, pinned above everything else",
+      },
+    ],
+    wideScreenshots: true,
+  },
   {
     slug: "easy-manga",
     title: "Easy Manga",
