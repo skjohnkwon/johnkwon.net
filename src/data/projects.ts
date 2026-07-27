@@ -54,6 +54,8 @@ export const projects: Project[] = [
       "umakbang is a file explorer built for that. It walks the tree and streams results in as it goes, so a library of a few hundred thousand files is browsable a second after launch rather than after a full scan. Every row draws its own waveform and plays in-window, so auditioning a folder of kicks is arrow-key, arrow-key, arrow-key.",
       "The metadata is parsed in-house. WAV, AIFF, FLAC, MP3, MP4 and Ogg headers are read directly, a few hundred KB per file instead of a full decode, which is what makes duration, sample rate, bit depth and tempo appear for a whole library in seconds. Tempo that isn't in the headers gets worked out by analysing the audio, riding on the decode the waveform already performs.",
       "It's also a real file manager: multi-select, cut/copy/paste, rename, delete to the recycle bin, drag and drop between folders or straight out into a DAW, star ratings and tags you can filter by. And because it's usually running while I work, it shrinks to a 300px mini player pinned above everything else.",
+      "Tempo detection matches external references. Key detection didn't, so I measured it instead of guessing: against files with known keys the built-in chroma correlation is right about a third of the time, and swapping in the standard profile sets changed nothing. There are two engines now, that one and Essentia's HPCP extractor compiled to WebAssembly, plus a harness that scores them on pairs of the same track in two formats, which is a labelled test set nobody had to label. A key it estimated is shown as its relative pair, because the note set turns out to be right far more often than the tonic is.",
+      "Around the edges it's grown the things I kept needing. Stem separation through LALAL.AI, as an explicit per-file action that totals the cost before it uploads anything. Exclusive track-sale contracts generated straight to PDF from a template you can edit in the app, since the template is the legal text. And a settings import that maps a backup's folders onto wherever they live on this machine, because everything umakbang remembers is keyed by absolute path, so a file copied to a new drive would otherwise arrive with none of its tags.",
     ],
     platform: "Desktop · Windows / macOS / Linux",
     tech: [
@@ -62,6 +64,7 @@ export const projects: Project[] = [
       "TypeScript",
       "Tailwind CSS",
       "Web Audio API",
+      "WebAssembly",
       "Canvas",
       "Vite",
     ],
@@ -69,7 +72,8 @@ export const projects: Project[] = [
       "Indexes a folder tree and streams results in as it walks, so a 250k-file library is browsable in seconds, with the saved index replayed on the next launch",
       "Scanning runs in a separate utility process, so a sustained walk never freezes the window",
       "Audio metadata parsed in-house from container headers: duration, sample rate, bit depth, channels, bitrate, plus BPM and musical key",
-      "Tempo detection by audio analysis for files whose headers and names don't say, riding on the decode the waveform already does",
+      "Tempo and key worked out by audio analysis for files whose headers and names don't say, riding on the decode the waveform already does, with the detectors running in a worker so the visualizers never drop a frame",
+      "Two key detectors, switchable: a built-in chroma correlation and Essentia's HPCP extractor compiled to WebAssembly, chosen by measurement rather than assumption — a harness scores both on pairs of the same track in two formats, which needs no hand-labelling",
       "A waveform on every row, cached to disk after the first play, and the playing row doubles as the scrub target",
       "Files served over a custom protocol with byte-range support, so seeking works and web security stays on. AIFF is rewrapped to WAV on the fly, since Chromium can't decode it",
       "Full file management: multi-select, cut/copy/paste, duplicate, rename, delete to the recycle bin, new folders, and drag and drop into folders or out into a DAW",
@@ -77,6 +81,9 @@ export const projects: Project[] = [
       "Real-time visualizers (spectrogram, spectrum, rolling waveform, scope, levels, stereo field) that can read the app or the machine's own output",
       "A mini player: a square window pinned above everything else, for when it's the thing playing while you work",
       "Production stats read from FL Studio's per-project time tracking: hours actually spent, and where they went",
+      "Settings, tags, ratings and analysis move between machines: the import maps a backup's folders onto wherever they live here, works the rest out from a single answer, and says how much it had to leave behind before it writes anything",
+      "Stem separation through LALAL.AI, as a deliberate per-file action that names the files, totals their length and checks the remaining balance before anything is uploaded",
+      "Exclusive track-sale contracts generated to PDF in-app, from a template you can edit, with no external binaries to install",
     ],
     screenshots: [
       {
