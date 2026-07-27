@@ -100,7 +100,7 @@ const Home: React.FC = () => {
                 <Card
                   title={project.title}
                   description={project.cardDescription}
-                  platform={project.platform}
+                  platforms={project.platforms}
                   to={`/projects/${project.slug}`}
                 />
               </div>

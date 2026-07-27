@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getProject } from "@/data/projects";
+import PlatformIcons from "@/components/PlatformIcons/PlatformIcons";
 
 const NotFound: React.FC = () => (
   <div className="flex flex-col min-h-screen bg-white dark:bg-gray-900 dark:text-white">
@@ -40,9 +41,7 @@ const ProjectDetail: React.FC = () => {
           <div className="border dark:border-gray-700 rounded-lg p-6">
             <div className="flex flex-wrap items-center gap-3">
               <h1 className="text-3xl font-bold">{project.title}</h1>
-              <span className="text-[11px] uppercase tracking-wide px-2 py-0.5 rounded-full border border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400">
-                {project.platform}
-              </span>
+              <PlatformIcons platforms={project.platforms} showLabels />
               {project.year && (
                 <span className="text-sm text-gray-400">{project.year}</span>
               )}

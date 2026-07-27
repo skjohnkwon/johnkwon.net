@@ -1,5 +1,7 @@
 // Single source of truth for the projects section + the /projects/:slug detail pages.
 
+import type { PlatformId } from "@/components/PlatformIcons/PlatformIcons";
+
 import umakbangLibrary from "../assets/projects/umakbang-library.jpg";
 import umakbangPlaying from "../assets/projects/umakbang-playing.jpg";
 import umakbangActions from "../assets/projects/umakbang-actions.jpg";
@@ -29,7 +31,8 @@ export interface Project {
   cardDescription: string;
   // Longer paragraphs for the detail page.
   overview: string[];
-  platform: string;
+  // Rendered as icons; see platformMeta for the names they carry.
+  platforms: PlatformId[];
   year?: string;
   tech: string[];
   features: string[];
@@ -57,7 +60,7 @@ export const projects: Project[] = [
       "Tempo detection matches external references. Key detection didn't, so I measured it instead of guessing: against files with known keys the built-in chroma correlation is right about a third of the time, and swapping in the standard profile sets changed nothing. There are two engines now, that one and Essentia's HPCP extractor compiled to WebAssembly, plus a harness that scores them on pairs of the same track in two formats, which is a labelled test set nobody had to label. A key it estimated is shown as its relative pair, because the note set turns out to be right far more often than the tonic is.",
       "Around the edges it's grown the things I kept needing. Stem separation through LALAL.AI, as an explicit per-file action that totals the cost before it uploads anything. Exclusive track-sale contracts generated straight to PDF from a template you can edit in the app, since the template is the legal text. And a settings import that maps a backup's folders onto wherever they live on this machine, because everything umakbang remembers is keyed by absolute path, so a file copied to a new drive would otherwise arrive with none of its tags.",
     ],
-    platform: "Desktop · Windows / macOS / Linux",
+    platforms: ["desktop"],
     tech: [
       "Electron",
       "React",
@@ -126,7 +129,7 @@ export const projects: Project[] = [
       "So I built my own, Easy Manga, as an improved replacement for the imanga servers, with a fresh catalog and reliable chapters and thumbnails. One search box queries every source at once and surfaces the best available copy of each series, so finding the next chapter takes seconds instead of hopping between sites.",
       "I also wanted a simpler, more streamlined UI than the apps I'd been using. The app keeps a personal library and reading history entirely on-device, with backup and restore so your progress moves with you to a new phone.",
     ],
-    platform: "iOS",
+    platforms: ["ios"],
     tech: ["iOS", "Custom backend", "Web scraping", "Local persistence"],
     features: [
       "Universal search across every configured manga source in a single query",
@@ -152,7 +155,7 @@ export const projects: Project[] = [
       "Simple Split takes the argument out of splitting a group bill. You photograph the receipt, and it uses OCR plus an AI parsing pass to pull out every line item, discount, and the tax, including messy formats like trailing-minus discounts and coupon lines tied to a product ID.",
       "From there you assign each item to whoever ordered it (items can be shared), and Simple Split allocates tax, tip, and discounts proportionally so every person's total is exact. It started life as a Python command-line receipt calculator I built for splitting Costco runs, and grew into a full app with a clean per-person summary you can copy and send.",
     ],
-    platform: "iOS · Python",
+    platforms: ["ios", "python"],
     tech: ["iOS", "Python", "OpenAI (OCR parsing)", "Pillow"],
     features: [
       "Photograph or upload a receipt and get a structured, itemized list back",
@@ -181,7 +184,7 @@ export const projects: Project[] = [
       "SpeakMentor is a platform for practicing English pronunciation, built with a team of developers. Users record their voice and get AI-generated feedback based on an analysis of the audio, so they can hear exactly where their pronunciation drifts and how to fix it.",
       "It also includes an AI-powered chatbot that lets users practice full conversations, giving learners a low-pressure way to build fluency beyond isolated words.",
     ],
-    platform: "Web",
+    platforms: ["web"],
     tech: ["React", "Django", "PostgreSQL", "AI / audio analysis"],
     features: [
       "Record your voice and receive AI-generated pronunciation feedback",
@@ -202,7 +205,7 @@ export const projects: Project[] = [
       "A full-stack fake online store with a frontend, backend, and relational database, built to put database design principles into practice with React, Django, and PostgreSQL.",
       "The focus was the data layer: constraints, triggers, and stored procedures enforce business rules at the database level, and hand-written raw SQL queries keep performance tight where the ORM would otherwise get in the way.",
     ],
-    platform: "Web",
+    platforms: ["web"],
     tech: ["React", "Django", "PostgreSQL", "SQL"],
     features: [
       "Full-stack store: frontend, backend, and relational database",
@@ -222,7 +225,7 @@ export const projects: Project[] = [
       "An analysis of how American music trends have shifted over time, and how significant events in America influenced those trends, using Python, NLTK, and scikit-learn.",
       "I trained a Random Forest model to predict a song's genre from its lyrics and to categorize events, then used it to connect changes in popular music back to what was happening in the country at the time.",
     ],
-    platform: "Data / ML",
+    platforms: ["ml"],
     tech: ["Python", "NLTK", "scikit-learn", "Random Forest"],
     features: [
       "Analyzed how U.S. music trends changed over time alongside major events",

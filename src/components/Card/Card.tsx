@@ -1,13 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PlatformIcons, {
+  type PlatformId,
+} from "@/components/PlatformIcons/PlatformIcons";
 
 interface Props {
   title: string;
   description: string;
   // Internal route to the project's detail page (e.g. "/projects/easy-manga").
   to: string;
-  // Optional small label shown as a pill (e.g. "iOS", "Web").
-  platform?: string;
+  // Shown as icons in the card header; the name lives in the tooltip.
+  platforms?: PlatformId[];
 }
 
 const Card = (props: Props) => {
@@ -21,10 +24,8 @@ const Card = (props: Props) => {
           <div className="font-bold text-xl dark:generic-hover">
             {props.title}
           </div>
-          {props.platform && (
-            <span className="text-[10px] uppercase tracking-wide px-2 py-0.5 rounded-full border border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 whitespace-nowrap">
-              {props.platform}
-            </span>
+          {props.platforms && props.platforms.length > 0 && (
+            <PlatformIcons platforms={props.platforms} />
           )}
         </div>
         <p className="text-gray-500 dark:text-gray-300 text-sm">
