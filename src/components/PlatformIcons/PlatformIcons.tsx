@@ -30,11 +30,17 @@ export const platformMeta: Record<
 
 interface Props {
   platforms: PlatformId[];
-  // Detail pages have the room for the name; the cards don't.
+  // Detail pages have the room for the name; the list doesn't.
   showLabels?: boolean;
+  // Drops the pill so the icon can sit inline in a dense list.
+  bare?: boolean;
 }
 
-const PlatformIcons = ({ platforms, showLabels = false }: Props) => (
+const PlatformIcons = ({
+  platforms,
+  showLabels = false,
+  bare = false,
+}: Props) => (
   <div className="flex items-center gap-1.5">
     {platforms.map((id) => {
       const { label, title, Icon } = platformMeta[id];
@@ -42,11 +48,19 @@ const PlatformIcons = ({ platforms, showLabels = false }: Props) => (
         <span
           key={id}
           title={title}
-          className={`flex items-center gap-1.5 rounded-full border border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 ${
-            showLabels ? "px-2.5 py-1" : "p-1.5"
+          className={`flex items-center gap-1.5 text-gray-500 dark:text-gray-400 ${
+            bare
+              ? ""
+              : `rounded-full border border-gray-300 dark:border-gray-600 ${
+                  showLabels ? "px-2.5 py-1" : "p-1.5"
+                }`
           }`}
         >
-          <Icon className="w-4 h-4" strokeWidth={1.75} aria-hidden="true" />
+          <Icon
+            className={bare ? "w-3.5 h-3.5" : "w-4 h-4"}
+            strokeWidth={1.75}
+            aria-hidden="true"
+          />
           {showLabels ? (
             <span className="text-[11px] uppercase tracking-wide">{label}</span>
           ) : (

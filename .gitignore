@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Full-size scans for the background slideshow (~235MB of TIFFs). The web-sized
+# webps that actually ship are committed under src/assets/bg.
+/pics
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

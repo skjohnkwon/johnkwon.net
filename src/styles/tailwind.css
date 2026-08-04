@@ -3,6 +3,7 @@
 @tailwind utilities;
 @layer base {
   :root {
+    --johnkwon-blue: 217 91% 55%;
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
     --card: 0 0% 100%;
@@ -69,6 +70,11 @@
   scrollbar-width: none;
 }
 
+/* For the few bits of type that sit straight on a photo instead of on glass. */
+.text-shadow-photo {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6), 0 0 14px rgba(0, 0, 0, 0.4);
+}
+
 .generic-hover {
   @apply hover:text-blue-800 active:text-red-600;
 
@@ -78,7 +84,7 @@
 @layer base {
   html,
   body {
-    @apply bg-white dark:bg-gray-900;
-    /* @apply lg:overflow-y-hidden overflow-auto; */
+    /* Only ever seen before the first slide decodes — the photo layer covers it. */
+    @apply bg-gray-200 dark:bg-gray-950;
   }
 }

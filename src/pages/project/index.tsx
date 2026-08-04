@@ -2,16 +2,34 @@ import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getProject } from "@/data/projects";
 import PlatformIcons from "@/components/PlatformIcons/PlatformIcons";
+import Glass from "@/components/Glass/Glass";
+
+const SectionHeading: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => (
+  <h2 className="text-xs uppercase tracking-[0.2em] text-gray-600 dark:text-gray-400">
+    {children}
+  </h2>
+);
 
 const NotFound: React.FC = () => (
-  <div className="flex flex-col min-h-screen bg-white dark:bg-gray-900 dark:text-white">
-    <div className="flex flex-col items-center justify-center flex-grow pt-28 space-y-4">
-      <div className="text-xl font-bold">project not found</div>
-      <Link to="/" className="text-blue-500 generic-hover">
+  <main className="min-h-screen px-4 pt-24 pb-16 sm:px-6 sm:pt-28">
+    <Glass
+      radius={28}
+      tintOpacity={0.38}
+      className="mx-auto max-w-[44rem] space-y-3 p-6"
+    >
+      <div className="text-lg font-bold text-gray-900 dark:text-white">
+        project not found
+      </div>
+      <Link
+        to="/"
+        className="text-sm text-blue-700 dark:text-blue-300 generic-hover"
+      >
         ← back home
       </Link>
-    </div>
-  </div>
+    </Glass>
+  </main>
 );
 
 const ProjectDetail: React.FC = () => {
@@ -26,134 +44,136 @@ const ProjectDetail: React.FC = () => {
   if (!project) return <NotFound />;
 
   return (
-    <div className="flex flex-col min-h-screen bg-white dark:bg-gray-900 dark:text-white">
-      <div className="flex flex-col items-center flex-grow pt-28 pb-16">
-        <div className="w-[80vw] xl:w-[1100px] min-w-[320px] space-y-4">
-          {/* Back link */}
-          <Link
-            to="/"
-            className="inline-block text-sm text-blue-500 dark:text-blue-300 generic-hover"
-          >
-            ← projects
-          </Link>
+    <main className="min-h-screen px-4 pt-24 pb-16 sm:px-6 sm:pt-28">
+      {/* Home stays hard left; a detail page is a document, so it gets a centred
+          column with the photo showing down both sides. */}
+      <div className="mx-auto max-w-[54rem] space-y-4">
+        <Link
+          to="/"
+          className="inline-block px-2 text-xs text-white/85 text-shadow-photo hover:text-white"
+        >
+          ← projects
+        </Link>
 
-          {/* Header */}
-          <div className="border dark:border-gray-700 rounded-lg p-6">
-            <div className="flex flex-wrap items-center gap-3">
-              <h1 className="text-3xl font-bold">{project.title}</h1>
-              <PlatformIcons platforms={project.platforms} showLabels />
-              {project.year && (
-                <span className="text-sm text-gray-400">{project.year}</span>
-              )}
-            </div>
-            <p className="mt-2 text-gray-500 dark:text-gray-300">
-              {project.tagline}
-            </p>
-
-            {/* Links */}
-            {(project.repo || project.liveLink) && (
-              <div className="mt-4 flex flex-wrap gap-3">
-                {project.liveLink && (
-                  <a
-                    href={project.liveLink.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-sm px-3 py-1.5 rounded-lg border border-gray-300 dark:border-gray-600 generic-hover"
-                  >
-                    {project.liveLink.label} ↗
-                  </a>
-                )}
-                {project.repo && (
-                  <a
-                    href={project.repo}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-sm px-3 py-1.5 rounded-lg border border-gray-300 dark:border-gray-600 generic-hover"
-                  >
-                    github ↗
-                  </a>
-                )}
-              </div>
+        <Glass radius={28} tintOpacity={0.38} className="p-6 sm:p-7">
+          <div className="flex flex-wrap items-center gap-3">
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+              {project.title}
+            </h1>
+            <PlatformIcons platforms={project.platforms} showLabels />
+            {project.year && (
+              <span className="text-xs text-gray-600 dark:text-gray-400">
+                {project.year}
+              </span>
             )}
           </div>
+          <p className="mt-2 max-w-[42rem] text-sm text-gray-800 dark:text-gray-200">
+            {project.tagline}
+          </p>
 
-          {/* Overview + features/tech */}
-          <div className="flex flex-col xl:flex-row gap-4">
-            <div className="border dark:border-gray-700 rounded-lg p-6 xl:flex-grow space-y-4">
-              <div className="text-lg font-bold">overview</div>
-              {project.overview.map((para, i) => (
-                <p key={i} className="text-gray-600 dark:text-gray-300">
-                  {para}
-                </p>
-              ))}
-
-              <div className="text-lg font-bold pt-2">features</div>
-              <ul className="space-y-2">
-                {project.features.map((f, i) => (
-                  <li
-                    key={i}
-                    className="text-gray-600 dark:text-gray-300 flex gap-2"
-                  >
-                    <span className="text-blue-500 dark:text-blue-300">•</span>
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="border dark:border-gray-700 rounded-lg p-6 xl:w-[280px] xl:flex-shrink-0 h-fit">
-              <div className="text-lg font-bold mb-3">built with</div>
-              <div className="flex flex-wrap gap-2">
-                {project.tech.map((t, i) => (
-                  <span
-                    key={i}
-                    className="text-xs px-2.5 py-1 rounded-full bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Screenshots */}
-          {project.screenshots.length > 0 && (
-            <div className="border dark:border-gray-700 rounded-lg p-6">
-              <div className="text-lg font-bold mb-4">screenshots</div>
-              {/* Phone screenshots tile happily four across; landscape desktop ones need
-                  the room, or every one of them is an unreadable thumbnail. */}
-              <div
-                className={
-                  project.wideScreenshots
-                    ? "grid grid-cols-1 lg:grid-cols-2 gap-4"
-                    : "grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
-                }
-              >
-                {project.screenshots.map((shot, i) => (
-                  <a
-                    key={i}
-                    href={shot.src}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="group block"
-                  >
-                    <img
-                      src={shot.src}
-                      alt={shot.caption}
-                      loading="lazy"
-                      className="w-full h-auto rounded-lg border border-gray-200 dark:border-gray-700 group-hover:scale-[1.02] transition-transform"
-                    />
-                    <p className="mt-2 text-xs text-center text-gray-500 dark:text-gray-400">
-                      {shot.caption}
-                    </p>
-                  </a>
-                ))}
-              </div>
+          {(project.repo || project.liveLink) && (
+            <div className="mt-4 flex flex-wrap gap-2">
+              {project.liveLink && (
+                <a
+                  href={project.liveLink.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-md border border-gray-500/40 px-3 py-1.5 text-xs text-gray-800 generic-hover dark:border-gray-300/25 dark:text-gray-200"
+                >
+                  {project.liveLink.label} ↗
+                </a>
+              )}
+              {project.repo && (
+                <a
+                  href={project.repo}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-md border border-gray-500/40 px-3 py-1.5 text-xs text-gray-800 generic-hover dark:border-gray-300/25 dark:text-gray-200"
+                >
+                  github ↗
+                </a>
+              )}
             </div>
           )}
-        </div>
+        </Glass>
+
+        <Glass
+          radius={28}
+          tintOpacity={0.38}
+          className="space-y-8 p-6 text-gray-800 dark:text-gray-200 sm:p-7"
+        >
+          <section>
+            <SectionHeading>overview</SectionHeading>
+            <div className="mt-3 max-w-[42rem] space-y-3 text-sm leading-relaxed">
+              {project.overview.map((para, i) => (
+                <p key={i}>{para}</p>
+              ))}
+            </div>
+          </section>
+
+          <section>
+            <SectionHeading>features</SectionHeading>
+            <ul className="mt-3 max-w-[42rem] space-y-2 text-sm leading-relaxed">
+              {project.features.map((f, i) => (
+                <li key={i} className="flex gap-2">
+                  <span className="text-gray-500 dark:text-gray-400">—</span>
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section>
+            <SectionHeading>built with</SectionHeading>
+            <div className="mt-3 flex flex-wrap gap-1.5">
+              {project.tech.map((t, i) => (
+                <span
+                  key={i}
+                  className="rounded-full border border-gray-500/35 px-2.5 py-1 text-[11px] dark:border-gray-300/20"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+          </section>
+        </Glass>
+
+        {project.screenshots.length > 0 && (
+          <Glass radius={28} tintOpacity={0.38} className="p-6 sm:p-7">
+            <SectionHeading>screenshots</SectionHeading>
+            {/* Phone screenshots tile happily four across; landscape desktop ones need
+                the room, or every one of them is an unreadable thumbnail. */}
+            <div
+              className={`mt-3 grid gap-4 ${
+                project.wideScreenshots
+                  ? "grid-cols-1 lg:grid-cols-2"
+                  : "grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+              }`}
+            >
+              {project.screenshots.map((shot, i) => (
+                <a
+                  key={i}
+                  href={shot.src}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group block"
+                >
+                  <img
+                    src={shot.src}
+                    alt={shot.caption}
+                    loading="lazy"
+                    className="w-full h-auto rounded-md border border-gray-500/25 transition-transform group-hover:scale-[1.02] dark:border-gray-300/15"
+                  />
+                  <p className="mt-2 text-[11px] text-gray-700 dark:text-gray-300">
+                    {shot.caption}
+                  </p>
+                </a>
+              ))}
+            </div>
+          </Glass>
+        )}
       </div>
-    </div>
+    </main>
   );
 };
 
