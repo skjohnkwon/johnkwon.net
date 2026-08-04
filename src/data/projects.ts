@@ -76,7 +76,7 @@ export const projects: Project[] = [
       "Scanning runs in a separate utility process, so a sustained walk never freezes the window",
       "Audio metadata parsed in-house from container headers: duration, sample rate, bit depth, channels, bitrate, plus BPM and musical key",
       "Tempo and key worked out by audio analysis for files whose headers and names don't say, riding on the decode the waveform already does, with the detectors running in a worker so the visualizers never drop a frame",
-      "Two key detectors, switchable: a built-in chroma correlation and Essentia's HPCP extractor compiled to WebAssembly, chosen by measurement rather than assumption — a harness scores both on pairs of the same track in two formats, which needs no hand-labelling",
+      "Two key detectors, switchable: a built-in chroma correlation and Essentia's HPCP extractor compiled to WebAssembly, chosen by measurement rather than assumption, with a harness that scores both on pairs of the same track in two formats and needs no hand-labelling",
       "A waveform on every row, cached to disk after the first play, and the playing row doubles as the scrub target",
       "Files served over a custom protocol with byte-range support, so seeking works and web security stays on. AIFF is rewrapped to WAV on the fly, since Chromium can't decode it",
       "Full file management: multi-select, cut/copy/paste, duplicate, rename, delete to the recycle bin, new folders, and drag and drop into folders or out into a DAW",
