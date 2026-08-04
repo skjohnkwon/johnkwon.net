@@ -15,9 +15,17 @@ export const LAYER_Z: Record<GlassLayer, number> = {
   overlay: 40,
 };
 
-// The backdrop only has to survive being blurred and refracted, so it is sampled
-// well below screen resolution — and once, for every layer.
-const MAX_TEXTURE_WIDTH = 1280;
+// The glass samples a heavily blurred copy of the backdrop while the backdrop
+// itself stays sharp on screen — the frosting belongs behind the text, not over
+// the photo.
+//
+// The blur lives here rather than in the shader because the shader's blur is a
+// 7-tap grid: widening it far enough to frost a panel would sample the texture
+// so sparsely that it ghosts into discrete copies instead of smearing. Cheaper
+// and cleaner to blur once, on the one small texture every layer shares.
+// Downscaling this hard is most of the blur; the gaussian just cleans it up.
+const MAX_TEXTURE_WIDTH = 640;
+const SAMPLE_BLUR_PX = 16;
 
 export class GlassStage {
   readonly layers: Record<GlassLayer, GlassRenderer>;
@@ -63,7 +71,21 @@ export class GlassStage {
 
     const ctx = this.sample.getContext("2d");
     if (!ctx) return;
-    ctx.drawImage(this.backdrop, 0, 0, width, height);
+    ctx.clearRect(0, 0, width, height);
+    // Safari only got canvas filters in 16.4; without it the downscale alone
+    // still frosts the panels, just less.
+    if ("filter" in ctx) ctx.filter = `blur(${SAMPLE_BLUR_PX}px)`;
+    // Overscan by the blur radius so panel edges sample real pixels rather than
+    // fading out into transparency.
+    const bleed = SAMPLE_BLUR_PX * 2;
+    ctx.drawImage(
+      this.backdrop,
+      -bleed,
+      -bleed,
+      width + bleed * 2,
+      height + bleed * 2
+    );
+    if ("filter" in ctx) ctx.filter = "none";
     this.sampleCssWidth = window.innerWidth;
 
     this.all.forEach((renderer) =>

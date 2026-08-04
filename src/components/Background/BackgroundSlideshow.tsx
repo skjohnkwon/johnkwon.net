@@ -18,13 +18,8 @@ const FADE_MS = 2500;
 // The glass resamples the backdrop whenever it changes; during a crossfade that
 // would mean a full texture upload every frame for no visible gain.
 const GLASS_REFRESH_MS = 60;
-
-// Slides are composited through half-size buffers. Scaling those back up is
-// most of the blur and costs nothing, so the gaussian on top can be modest —
-// and it means the expensive filtered draw happens once per slide rather than
-// once per crossfade frame.
-const BUFFER_SCALE = 0.5;
-const BLUR_CSS_PX = 18;
+// Photos stay sharp. This only takes the top off them so the panels sitting on
+// top have something to separate from — the frosting happens in the glass.
 const DIM = 0.24;
 
 const prefersReducedMotion = () =>
@@ -34,8 +29,8 @@ const prefersReducedMotion = () =>
 /**
  * The photos are painted to a canvas rather than <img> tags because the glass
  * panels need something they can sample as a texture. This canvas is both the
- * thing you see and the thing they refract, so the blur and the dim below apply
- * to both — the panels refract the same soft image that's on screen.
+ * thing you see and the thing they refract — GlassStage blurs its own sampled
+ * copy, so the panels frost without touching what's on screen.
  */
 const BackgroundSlideshow: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -53,21 +48,12 @@ const BackgroundSlideshow: React.FC = () => {
     const ctx = canvas?.getContext("2d");
     if (!canvas || !ctx || slides.length === 0) return;
 
-    ctx.imageSmoothingEnabled = true;
-    ctx.imageSmoothingQuality = "high";
-
     let index = Math.floor(Math.random() * slides.length);
-    let currentImage: HTMLImageElement | null = null;
-    let front = 0;
-    let outgoing: HTMLCanvasElement | null = null;
+    let current: HTMLImageElement | null = null;
+    let outgoing: HTMLImageElement | null = null;
     let fadeStart = 0;
     let frame = 0;
     let lastGlassRefresh = 0;
-
-    const buffers = [
-      document.createElement("canvas"),
-      document.createElement("canvas"),
-    ];
 
     const cache = new Map<number, HTMLImageElement>();
     const load = (i: number) => {
@@ -89,49 +75,26 @@ const BackgroundSlideshow: React.FC = () => {
       canvas.height = height;
       ctx.imageSmoothingEnabled = true;
       ctx.imageSmoothingQuality = "high";
-      for (const buffer of buffers) {
-        buffer.width = Math.max(1, Math.round(width * BUFFER_SCALE));
-        buffer.height = Math.max(1, Math.round(height * BUFFER_SCALE));
-      }
       return true;
     };
 
-    /** Cover-fit one slide into a buffer, blurred, at buffer resolution. */
-    const renderSlide = (img: HTMLImageElement, buffer: HTMLCanvasElement) => {
-      const bctx = buffer.getContext("2d");
-      if (!bctx || !img.complete || img.naturalWidth === 0) return;
-
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      const blur = BLUR_CSS_PX * dpr * BUFFER_SCALE;
-
-      bctx.setTransform(1, 0, 0, 1, 0, 0);
-      bctx.clearRect(0, 0, buffer.width, buffer.height);
-      // Not every engine supports canvas filters (Safari only got them in 16.4).
-      // Where it's missing the upscale still softens the image, just less.
-      if ("filter" in bctx) bctx.filter = `blur(${blur}px)`;
-
-      // Overscan by the blur radius, so the edges sample real pixels instead of
-      // fading into transparency.
-      const bleed = blur * 2;
+    const drawCover = (img: HTMLImageElement, alpha: number) => {
+      if (!img.complete || img.naturalWidth === 0) return;
       const scale = Math.max(
-        (buffer.width + bleed * 2) / img.naturalWidth,
-        (buffer.height + bleed * 2) / img.naturalHeight
+        canvas.width / img.naturalWidth,
+        canvas.height / img.naturalHeight
       );
       const w = img.naturalWidth * scale;
       const h = img.naturalHeight * scale;
-      bctx.drawImage(img, (buffer.width - w) / 2, (buffer.height - h) / 2, w, h);
-      if ("filter" in bctx) bctx.filter = "none";
+      ctx.globalAlpha = alpha;
+      ctx.drawImage(img, (canvas.width - w) / 2, (canvas.height - h) / 2, w, h);
+      ctx.globalAlpha = 1;
     };
 
     const paint = (mix: number, refreshGlass = true) => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      if (outgoing) {
-        ctx.globalAlpha = 1;
-        ctx.drawImage(outgoing, 0, 0, canvas.width, canvas.height);
-      }
-      ctx.globalAlpha = outgoing ? mix : 1;
-      ctx.drawImage(buffers[front], 0, 0, canvas.width, canvas.height);
-      ctx.globalAlpha = 1;
+      if (outgoing) drawCover(outgoing, 1);
+      if (current) drawCover(current, outgoing ? mix : 1);
 
       ctx.fillStyle = `rgba(0, 0, 0, ${DIM})`;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -164,11 +127,8 @@ const BackgroundSlideshow: React.FC = () => {
     const show = (next: number, fade: boolean) => {
       const img = load(next);
       const begin = () => {
-        const incoming = 1 - front;
-        renderSlide(img, buffers[incoming]);
-        outgoing = fade ? buffers[front] : null;
-        front = incoming;
-        currentImage = img;
+        outgoing = fade ? current : null;
+        current = img;
         index = next;
         load((next + 1) % slides.length);
         if (!fade) {
@@ -185,11 +145,7 @@ const BackgroundSlideshow: React.FC = () => {
     show(index, false);
 
     const onResize = () => {
-      if (!resize()) return;
-      // Buffers were resized, which cleared them; the fade can't be salvaged.
-      outgoing = null;
-      if (currentImage) renderSlide(currentImage, buffers[front]);
-      paint(1);
+      if (resize()) paint(1);
     };
     window.addEventListener("resize", onResize);
 
