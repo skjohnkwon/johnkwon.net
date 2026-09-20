@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import DarkModeToggle from "../DarkModeButton/DarkModeToggle";
-import Glass from "../Glass/Glass";
+import Panel from "../Panel/Panel";
 
 interface NavbarItem {
   title: string;
@@ -21,13 +21,7 @@ const navbarItems: NavbarItem[] = [
 const Navbar: React.FC = () => {
   return (
     <header className="fixed top-0 left-0 z-50 p-4 sm:p-6">
-      <Glass
-        radius="pill"
-        tintOpacity={0.42}
-        warp
-        layer="overlay"
-        className="px-5 py-2.5"
-      >
+      <Panel className="!rounded-full px-5 py-2.5">
         <nav className="flex items-center gap-x-2 text-sm text-gray-800 dark:text-gray-200">
           <Link
             to="/"
@@ -51,7 +45,7 @@ const Navbar: React.FC = () => {
           <span className="text-gray-500/70 dark:text-gray-400/70">/</span>
           <DarkModeToggle />
         </nav>
-      </Glass>
+      </Panel>
     </header>
   );
 };

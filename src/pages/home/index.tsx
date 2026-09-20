@@ -1,23 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import selfie from "../../assets/selfie.webp";
-import RandomGreetingButton from "@/components/RandomGreetingButton/RandomGreetingButton";
 import PlatformIcons from "@/components/PlatformIcons/PlatformIcons";
-import Glass from "@/components/Glass/Glass";
+import Panel from "@/components/Panel/Panel";
 import { projects } from "@/data/projects";
 
 const Home: React.FC = () => {
   return (
     <main className="min-h-screen px-4 pt-24 pb-16 sm:px-6 sm:pt-28">
       <div className="max-w-[44rem] space-y-4">
-        <Glass radius={28} tintOpacity={0.38} className="p-6 sm:p-7">
-          <div className="text-lg font-bold text-gray-900 dark:text-white">
-            <RandomGreetingButton />
-          </div>
-
+        <Panel className="p-6 sm:p-7">
           {/* The selfie floats, so the whole intro wraps around it rather than
               sitting in a column beside it. */}
-          <div className="mt-4 text-sm leading-relaxed text-gray-800 dark:text-gray-200">
+          <div className="text-sm leading-relaxed text-gray-800 dark:text-gray-200">
             <img
               src={selfie}
               alt="john kwon"
@@ -58,9 +53,9 @@ const Home: React.FC = () => {
               !
             </p>
           </div>
-        </Glass>
+        </Panel>
 
-        <Glass radius={28} tintOpacity={0.38} className="p-6 sm:p-7">
+        <Panel className="p-6 sm:p-7">
           <h2 className="text-xs uppercase tracking-[0.2em] text-gray-600 dark:text-gray-400">
             projects
           </h2>
@@ -90,7 +85,7 @@ const Home: React.FC = () => {
               </li>
             ))}
           </ul>
-        </Glass>
+        </Panel>
 
         <a
           href="https://github.com/skjohnkwon/johnkwon.net"

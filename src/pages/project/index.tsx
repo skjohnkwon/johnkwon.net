@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getProject } from "@/data/projects";
 import PlatformIcons from "@/components/PlatformIcons/PlatformIcons";
-import Glass from "@/components/Glass/Glass";
+import Panel from "@/components/Panel/Panel";
 
 const SectionHeading: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -14,11 +14,7 @@ const SectionHeading: React.FC<{ children: React.ReactNode }> = ({
 
 const NotFound: React.FC = () => (
   <main className="min-h-screen px-4 pt-24 pb-16 sm:px-6 sm:pt-28">
-    <Glass
-      radius={28}
-      tintOpacity={0.38}
-      className="mx-auto max-w-[44rem] space-y-3 p-6"
-    >
+    <Panel className="mx-auto max-w-[44rem] space-y-3 p-6">
       <div className="text-lg font-bold text-gray-900 dark:text-white">
         project not found
       </div>
@@ -28,7 +24,7 @@ const NotFound: React.FC = () => (
       >
         ← back home
       </Link>
-    </Glass>
+    </Panel>
   </main>
 );
 
@@ -55,7 +51,7 @@ const ProjectDetail: React.FC = () => {
           ← projects
         </Link>
 
-        <Glass radius={28} tintOpacity={0.38} className="p-6 sm:p-7">
+        <Panel className="p-6 sm:p-7">
           <div className="flex flex-wrap items-center gap-3">
             <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
               {project.title}
@@ -95,13 +91,9 @@ const ProjectDetail: React.FC = () => {
               )}
             </div>
           )}
-        </Glass>
+        </Panel>
 
-        <Glass
-          radius={28}
-          tintOpacity={0.38}
-          className="space-y-8 p-6 text-gray-800 dark:text-gray-200 sm:p-7"
-        >
+        <Panel className="space-y-8 p-6 text-gray-800 dark:text-gray-200 sm:p-7">
           <section>
             <SectionHeading>overview</SectionHeading>
             <div className="mt-3 max-w-[42rem] space-y-3 text-sm leading-relaxed">
@@ -136,10 +128,10 @@ const ProjectDetail: React.FC = () => {
               ))}
             </div>
           </section>
-        </Glass>
+        </Panel>
 
         {project.screenshots.length > 0 && (
-          <Glass radius={28} tintOpacity={0.38} className="p-6 sm:p-7">
+          <Panel className="p-6 sm:p-7">
             <SectionHeading>screenshots</SectionHeading>
             {/* Phone screenshots tile happily four across; landscape desktop ones need
                 the room, or every one of them is an unreadable thumbnail. */}
@@ -170,7 +162,7 @@ const ProjectDetail: React.FC = () => {
                 </a>
               ))}
             </div>
-          </Glass>
+          </Panel>
         )}
       </div>
     </main>
