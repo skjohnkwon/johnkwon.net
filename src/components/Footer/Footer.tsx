@@ -7,7 +7,7 @@ const Footer: React.FC = () => (
       href="https://github.com/skjohnkwon/johnkwon.net"
       target="_blank"
       rel="noreferrer"
-      className="text-shadow-photo text-xs text-white/75 hover:cursor-zoom-in hover:text-white"
+      className="text-shadow-photo text-xs text-white/75"
     >
       vite + react + typescript + tailwindcss + shadcn/ui deployed on aws
       amplify

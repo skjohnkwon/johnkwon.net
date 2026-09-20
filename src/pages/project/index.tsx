@@ -112,13 +112,13 @@ const ProjectDetail: React.FC = () => {
                 href={shot.src}
                 target="_blank"
                 rel="noreferrer"
-                className="group w-auto shrink-0 snap-start"
+                className="w-auto shrink-0 snap-start"
               >
                 <img
                   src={shot.src}
                   alt={shot.caption}
                   loading="lazy"
-                  className={`w-auto rounded-md border border-white/10 transition-transform group-hover:scale-[1.02] ${
+                  className={`w-auto rounded-md border border-white/10 ${
                     project.wideScreenshots ? "h-56 sm:h-64" : "h-72 sm:h-80"
                   }`}
                 />

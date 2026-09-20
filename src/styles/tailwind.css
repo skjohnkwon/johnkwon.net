@@ -59,7 +59,7 @@
 }
 
 .navbar-link {
-  @apply hover:text-johnkwonBlue hover:underline cursor-pointer;
+  @apply cursor-pointer;
 }
 
 .scrollbar-hidden::-webkit-scrollbar {
@@ -77,10 +77,11 @@
     0 0 20px rgba(0, 0, 0, 0.5);
 }
 
+ /* Press feedback only — the site has no hover states. */
 .generic-hover {
-  @apply hover:text-blue-800 active:text-red-600;
+  @apply active:text-red-600;
 
-  @apply dark:hover:text-blue-300 dark:active:text-red-400;
+  @apply dark:active:text-red-400;
 }
 
 @layer base {
@@ -88,5 +89,14 @@
   body {
     /* Only ever seen before the first slide decodes — the photo layer covers it. */
     @apply bg-gray-200 dark:bg-gray-950;
+  }
+
+  /* Nothing on the page is meant to be selected or dragged out of it. */
+  body {
+    @apply select-none;
+  }
+
+  img {
+    -webkit-user-drag: none;
   }
 }

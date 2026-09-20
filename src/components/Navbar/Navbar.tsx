@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 interface NavbarItem {
   title: string;
@@ -19,14 +18,12 @@ const navbarItems: NavbarItem[] = [
 // hamburger.
 const Navbar: React.FC = () => {
   return (
-    <header className="px-6 py-4 sm:px-10">
+    <header className="px-6 pb-4 pt-5 sm:px-10 sm:pt-7">
       <nav className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 text-base text-gray-800 dark:text-gray-200">
-        <Link
-          to="/"
-          className="font-bold italic text-gray-900 dark:text-white generic-hover"
-        >
+        {/* The name is a label, not a control — nothing to hover. */}
+        <span className="font-bold italic text-gray-900 dark:text-white">
           john kwon
-        </Link>
+        </span>
         {navbarItems.map((item) => (
           <a
             key={item.title}
