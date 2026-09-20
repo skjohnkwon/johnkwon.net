@@ -70,11 +70,32 @@
   scrollbar-width: none;
 }
 
-/* For type that sits straight on a photo rather than on the panel. The photos
-   are sharp and can be bright anywhere, so this needs a real halo. */
-.text-shadow-photo {
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.75),
-    0 0 20px rgba(0, 0, 0, 0.5);
+/* The type is filled with a picture of the backdrop's inverse rather than a
+   colour — see lib/adaptiveInk. Only switched on once there's a mask to use, so
+   the plain colours cover the first paint and any browser that can't do this. */
+.ink-ready [data-ink] {
+  background-image: var(--adaptive-ink);
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.ink-ready [data-ink],
+.ink-ready [data-ink] * {
+  color: transparent;
+}
+
+/* Underlines and icons draw from currentColor, which is now transparent, so
+   they need a colour of their own. Slate sits far enough from both ends of the
+   ink to stay visible either way. */
+.ink-ready [data-ink] a {
+  -webkit-text-decoration-color: rgb(148 163 184 / 0.9);
+  text-decoration-color: rgb(148 163 184 / 0.9);
+}
+
+.ink-ready [data-ink] svg,
+.ink-ready [data-ink] svg * {
+  color: rgb(148 163 184 / 0.95);
 }
 
  /* Press feedback only — the site has no hover states. */

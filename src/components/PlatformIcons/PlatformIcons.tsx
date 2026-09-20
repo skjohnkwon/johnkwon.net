@@ -45,9 +45,15 @@ const PlatformIcons = ({
     {platforms.map((id) => {
       const { label, title, Icon } = platformMeta[id];
       return (
+        // The name is carried by aria-label rather than visually-hidden text:
+        // the page fills its type from a background clipped to the text, and a
+        // clip is computed from every descendant's glyphs, hidden or not — an
+        // sr-only span would be painted right along with the rest.
         <span
           key={id}
           title={title}
+          role="img"
+          aria-label={title}
           className={`flex items-center gap-1.5 text-gray-500 dark:text-gray-400 ${
             bare
               ? ""
@@ -61,10 +67,8 @@ const PlatformIcons = ({
             strokeWidth={1.75}
             aria-hidden="true"
           />
-          {showLabels ? (
+          {showLabels && (
             <span className="text-[11px] tracking-wide">{label}</span>
-          ) : (
-            <span className="sr-only">{title}</span>
           )}
         </span>
       );
