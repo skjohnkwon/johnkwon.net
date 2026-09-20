@@ -70,9 +70,8 @@
   scrollbar-width: none;
 }
 
-/* For the few bits of type that sit straight on a photo instead of on glass.
-   The photos are sharp and can be bright anywhere, so this needs a real halo
-   rather than a soft drop shadow. */
+/* For type that sits straight on a photo rather than on the panel. The photos
+   are sharp and can be bright anywhere, so this needs a real halo. */
 .text-shadow-photo {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.75),
     0 0 20px rgba(0, 0, 0, 0.5);

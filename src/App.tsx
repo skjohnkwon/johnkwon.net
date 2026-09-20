@@ -4,18 +4,25 @@ import Home from "./pages/home";
 import ProjectDetail from "./pages/project";
 import Navbar from "./components/Navbar/Navbar";
 import BackgroundSlideshow from "./components/Background/BackgroundSlideshow";
+import Shell from "./components/Shell/Shell";
+import Footer from "./components/Footer/Footer";
 
-// Two layers, bottom to top: the photo backdrop (z-0) and the page (z-10 and up).
+// The photo backdrop (z-0) and, sitting on it, the one column the app lives in.
 const App: React.FC = () => {
   return (
     <Router>
       <BackgroundSlideshow />
-      <Navbar />
-      <div className="relative z-10">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/projects/:slug" element={<ProjectDetail />} />
-        </Routes>
+      {/* min-height, not height, so a page taller than the viewport grows past
+          the centre instead of being clipped at the top. */}
+      <div className="flex min-h-screen flex-col justify-center">
+        <Shell>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/projects/:slug" element={<ProjectDetail />} />
+          </Routes>
+        </Shell>
+        <Footer />
       </div>
     </Router>
   );

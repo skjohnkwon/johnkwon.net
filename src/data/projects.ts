@@ -195,46 +195,6 @@ export const projects: Project[] = [
     screenshots: [],
     repo: "https://github.com/skjohnkwon/SpeakMentor-Django",
   },
-  {
-    slug: "database-design-project",
-    title: "Database Design Project",
-    tagline: "A full-stack fake online store built around a real relational schema.",
-    cardDescription:
-      "This fake online store has a frontend, backend, and database • Made with React, Django, and PostgreSQL • Used constraints, triggers, and stored procedures to enforce business rules • Used raw SQL queries to optimize performance.",
-    overview: [
-      "A full-stack fake online store with a frontend, backend, and relational database, built to put database design principles into practice with React, Django, and PostgreSQL.",
-      "The focus was the data layer: constraints, triggers, and stored procedures enforce business rules at the database level, and hand-written raw SQL queries keep performance tight where the ORM would otherwise get in the way.",
-    ],
-    platforms: ["web"],
-    tech: ["React", "Django", "PostgreSQL", "SQL"],
-    features: [
-      "Full-stack store: frontend, backend, and relational database",
-      "Constraints, triggers, and stored procedures enforce business rules in the DB",
-      "Raw SQL queries hand-tuned for performance",
-    ],
-    screenshots: [],
-    repo: "https://github.com/skjohnkwon/DDP-SDJ",
-  },
-  {
-    slug: "machine-learning-project",
-    title: "Machine Learning Project",
-    tagline: "Tracking how American music trends shifted with major events.",
-    cardDescription:
-      "Performed analysis on how American music trends have changed over time and how significant events in America have influenced these trends • Used Python, NLTK, and scikit-learn • Created a Random Forest model to predict the genre of a song based on its lyrics and categorize events.",
-    overview: [
-      "An analysis of how American music trends have shifted over time, and how significant events in America influenced those trends, using Python, NLTK, and scikit-learn.",
-      "I trained a Random Forest model to predict a song's genre from its lyrics and to categorize events, then used it to connect changes in popular music back to what was happening in the country at the time.",
-    ],
-    platforms: ["ml"],
-    tech: ["Python", "NLTK", "scikit-learn", "Random Forest"],
-    features: [
-      "Analyzed how U.S. music trends changed over time alongside major events",
-      "Random Forest model predicts a song's genre from its lyrics",
-      "Event categorization to correlate trends with real-world moments",
-    ],
-    screenshots: [],
-    repo: "https://github.com/skjohnkwon/DataMining541",
-  },
 ];
 
 export const getProject = (slug: string): Project | undefined =>

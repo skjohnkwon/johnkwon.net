@@ -62,7 +62,7 @@ const PlatformIcons = ({
             aria-hidden="true"
           />
           {showLabels ? (
-            <span className="text-[11px] uppercase tracking-wide">{label}</span>
+            <span className="text-[11px] tracking-wide">{label}</span>
           ) : (
             <span className="sr-only">{title}</span>
           )}

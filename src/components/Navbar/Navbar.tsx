@@ -1,7 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import DarkModeToggle from "../DarkModeButton/DarkModeToggle";
-import Panel from "../Panel/Panel";
 
 interface NavbarItem {
   title: string;
@@ -13,39 +11,34 @@ const navbarItems: NavbarItem[] = [
   { title: "linkedin", link: "https://www.linkedin.com/in/jung-ho-kwon/" },
   {
     title: "resume",
-    link: "https://docs.google.com/document/d/1STD2EDd2iBYpMHL3gxBeMLANmx4cBMKN/edit?usp=sharing&ouid=100261606684662946327&rtpof=true&sd=true",
+    link: "https://docs.google.com/document/d/12t84q5KZctJzQboS-AHVJs51zgLuW6bZ/edit?usp=sharing&ouid=100261606684662946327&rtpof=true&sd=true",
   },
 ];
 
-// One line, left-aligned, small enough that it never needs a hamburger.
+// The first row of the panel. One line, small enough that it never needs a
+// hamburger.
 const Navbar: React.FC = () => {
   return (
-    <header className="fixed top-0 left-0 z-50 p-4 sm:p-6">
-      <Panel className="!rounded-full px-5 py-2.5">
-        <nav className="flex items-center gap-x-2 text-sm text-gray-800 dark:text-gray-200">
-          <Link
-            to="/"
-            className="font-bold italic text-gray-900 dark:text-white generic-hover"
+    <header className="px-6 py-4 sm:px-10">
+      <nav className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 text-base text-gray-800 dark:text-gray-200">
+        <Link
+          to="/"
+          className="font-bold italic text-gray-900 dark:text-white generic-hover"
+        >
+          john kwon
+        </Link>
+        {navbarItems.map((item) => (
+          <a
+            key={item.title}
+            href={item.link}
+            target="_blank"
+            rel="noreferrer"
+            className="navbar-link generic-hover"
           >
-            john kwon
-          </Link>
-          {navbarItems.map((item) => (
-            <React.Fragment key={item.title}>
-              <span className="text-gray-500/70 dark:text-gray-400/70">/</span>
-              <a
-                href={item.link}
-                target="_blank"
-                rel="noreferrer"
-                className="navbar-link generic-hover"
-              >
-                {item.title}
-              </a>
-            </React.Fragment>
-          ))}
-          <span className="text-gray-500/70 dark:text-gray-400/70">/</span>
-          <DarkModeToggle />
-        </nav>
-      </Panel>
+            {item.title}
+          </a>
+        ))}
+      </nav>
     </header>
   );
 };

@@ -1,6 +1,9 @@
 :root {
-  font-family: "JetBrains Mono", monospace;
-  line-height: 1.3;
+  /* Latin falls to Garamond, hangul falls through it to the Korean serif —
+     the browser picks per glyph, so both scripts stay in the same key. */
+  font-family: "EB Garamond", "Noto Serif KR", Georgia, "Times New Roman", serif;
+  /* Garamond sets small for its point size and wants more air than a mono did. */
+  line-height: 1.5;
   font-weight: 400;
 
   color: rgba(124, 124, 124, 0.87);
